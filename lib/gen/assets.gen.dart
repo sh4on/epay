@@ -11,6 +11,29 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsOnboardingGen {
+  const $AssetsOnboardingGen();
+
+  /// File path: assets/onboarding/first_onboarding_image.svg
+  String get firstOnboardingImage =>
+      'assets/onboarding/first_onboarding_image.svg';
+
+  /// File path: assets/onboarding/second_onboarding_image.svg
+  String get secondOnboardingImage =>
+      'assets/onboarding/second_onboarding_image.svg';
+
+  /// File path: assets/onboarding/third_onboarding_image.svg
+  String get thirdOnboardingImage =>
+      'assets/onboarding/third_onboarding_image.svg';
+
+  /// List of all assets
+  List<String> get values => [
+    firstOnboardingImage,
+    secondOnboardingImage,
+    thirdOnboardingImage,
+  ];
+}
+
 class $AssetsSplashGen {
   const $AssetsSplashGen();
 
@@ -32,6 +55,7 @@ class $AssetsSplashGen {
 class Assets {
   const Assets._();
 
+  static const $AssetsOnboardingGen onboarding = $AssetsOnboardingGen();
   static const $AssetsSplashGen splash = $AssetsSplashGen();
 }
 
