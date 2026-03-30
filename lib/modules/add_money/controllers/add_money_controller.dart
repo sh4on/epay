@@ -1,0 +1,144 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../../data/repositories/add_money_repository.dart';
+
+// add money tab types
+enum AddMoneyTab { bankToEkpay, cardToEkpay }
+
+// money source model
+class MoneySourceItem {
+  final String id;
+  final String label;
+  final String icon;
+
+  const MoneySourceItem({
+    required this.id,
+    required this.label,
+    required this.icon,
+  });
+
+  factory MoneySourceItem.fromJson(Map<String, dynamic> json) =>
+      MoneySourceItem(
+        id: json['id'] ?? '',
+        label: json['label'] ?? '',
+        icon: json['icon'] ?? '',
+      );
+}
+
+class AddMoneyController extends GetxController {
+  final AddMoneyRepository _repository;
+  AddMoneyController(this._repository);
+
+  // ── tabs ──────────────────────────────────────────────────────────────────
+  final Rx<AddMoneyTab> activeTab = AddMoneyTab.bankToEkpay.obs;
+
+  // ── sources ───────────────────────────────────────────────────────────────
+
+  // page status
+  Rx<RxStatus> status = Rx<RxStatus>(RxStatus.loading());
+
+  // bank tab sources
+  RxList<MoneySourceItem> bankSources = <MoneySourceItem>[].obs;
+
+  // card tab sources
+  RxList<MoneySourceItem> cardSources = <MoneySourceItem>[].obs;
+
+  // currently selected source id in bank tab
+  final RxString selectedBankSourceId = '1'.obs;
+
+  // currently selected source id in card tab
+  final RxString selectedCardSourceId = '1'.obs;
+
+  // processing state
+  final RxBool isProcessing = false.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    fetchSources();
+  }
+
+  // fetch all source options
+  Future<void> fetchSources() async {
+    status.value = RxStatus.loading();
+
+    final bankResult = await _repository.fetchBankSources();
+    final cardResult = await _repository.fetchCardSources();
+
+    if (bankResult.isSuccess && cardResult.isSuccess) {
+      // parse bank sources
+      bankSources.value = (bankResult.data as List)
+          .map((e) => MoneySourceItem.fromJson(e))
+          .toList();
+
+      // parse card sources
+      cardSources.value = (cardResult.data as List)
+          .map((e) => MoneySourceItem.fromJson(e))
+          .toList();
+
+      status.value = RxStatus.success();
+    } else {
+      status.value = RxStatus.error('Failed to load sources');
+    }
+  }
+
+  // switch between bank and card tabs
+  void switchTab(AddMoneyTab tab) {
+    activeTab.value = tab;
+  }
+
+  // select a bank source
+  void selectBankSource(String id) {
+    selectedBankSourceId.value = id;
+  }
+
+  // select a card source
+  void selectCardSource(String id) {
+    selectedCardSourceId.value = id;
+  }
+
+  // get current active sources based on tab
+  List<MoneySourceItem> get activeSources =>
+      activeTab.value == AddMoneyTab.bankToEkpay ? bankSources : cardSources;
+
+  // get current selected source id based on tab
+  String get activeSelectedId =>
+      activeTab.value == AddMoneyTab.bankToEkpay
+          ? selectedBankSourceId.value
+          : selectedCardSourceId.value;
+
+  // proceed button tap
+  Future<void> onProceedTap() async {
+    isProcessing.value = true;
+
+    final result = await _repository.processAddMoney(
+      sourceId: activeSelectedId,
+      amount: 0, // amount entry handled on next screen — placeholder
+      type: activeTab.value == AddMoneyTab.bankToEkpay
+          ? 'bank'
+          : 'card',
+    );
+
+    isProcessing.value = false;
+
+    if (result.isSuccess) {
+      Get.snackbar(
+        'Add Money',
+        'Proceeding to add money. Next step coming soon.',
+        snackPosition: SnackPosition.BOTTOM,
+        margin: const EdgeInsets.all(16),
+        borderRadius: 12,
+      );
+    } else {
+      Get.snackbar(
+        'Failed',
+        result.message ?? 'Something went wrong.',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: const Color(0xFFE53935),
+        colorText: const Color(0xFFFFFFFF),
+        margin: const EdgeInsets.all(16),
+        borderRadius: 12,
+      );
+    }
+  }
+}
