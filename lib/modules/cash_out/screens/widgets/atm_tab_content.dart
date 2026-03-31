@@ -1,3 +1,4 @@
+import 'package:epay/shared/common_widgets/contact_us_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -126,19 +127,8 @@ class AtmTabContent extends StatelessWidget {
           ),
 
           // contact us footer
-          Padding(
-            padding: const EdgeInsets.all(AppSpacing.xl),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  '${AppStrings.didYouFaceIssue} ',
-                  style: AppTypography.bodyMedium,
-                ),
-                Text(AppStrings.contactUs, style: AppTypography.link),
-              ],
-            ),
-          ),
+          ContactUsRow(),
+          const SizedBox(height: kToolbarHeight),
         ],
       );
     });

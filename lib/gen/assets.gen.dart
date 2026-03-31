@@ -27,6 +27,9 @@ class $AssetsAuthGen {
 class $AssetsHomeGen {
   const $AssetsHomeGen();
 
+  /// Directory path: assets/home/add_money
+  $AssetsHomeAddMoneyGen get addMoney => const $AssetsHomeAddMoneyGen();
+
   /// Directory path: assets/home/cash_out
   $AssetsHomeCashOutGen get cashOut => const $AssetsHomeCashOutGen();
 
@@ -35,6 +38,9 @@ class $AssetsHomeGen {
 
   /// Directory path: assets/home/remittance
   $AssetsHomeRemittanceGen get remittance => const $AssetsHomeRemittanceGen();
+
+  /// Directory path: assets/home/send_money
+  $AssetsHomeSendMoneyGen get sendMoney => const $AssetsHomeSendMoneyGen();
 
   /// Directory path: assets/home/top_section
   $AssetsHomeTopSectionGen get topSection => const $AssetsHomeTopSectionGen();
@@ -81,6 +87,19 @@ class $AssetsSplashGen {
   List<dynamic> get values => [bottomBgGraphic, splashLogo, topBgGraphic];
 }
 
+class $AssetsHomeAddMoneyGen {
+  const $AssetsHomeAddMoneyGen();
+
+  /// File path: assets/home/add_money/bank_to_epay.svg
+  String get bankToEpay => 'assets/home/add_money/bank_to_epay.svg';
+
+  /// File path: assets/home/add_money/card_to_epay.svg
+  String get cardToEpay => 'assets/home/add_money/card_to_epay.svg';
+
+  /// List of all assets
+  List<String> get values => [bankToEpay, cardToEpay];
+}
+
 class $AssetsHomeCashOutGen {
   const $AssetsHomeCashOutGen();
 
@@ -90,27 +109,11 @@ class $AssetsHomeCashOutGen {
   /// File path: assets/home/cash_out/atm.svg
   String get atm => 'assets/home/cash_out/atm.svg';
 
-  /// File path: assets/home/cash_out/basic_bank.svg
-  String get basicBank => 'assets/home/cash_out/basic_bank.svg';
-
-  /// File path: assets/home/cash_out/brac_bank.svg
-  String get bracBank => 'assets/home/cash_out/brac_bank.svg';
-
-  /// File path: assets/home/cash_out/islami_bank.svg
-  String get islamiBank => 'assets/home/cash_out/islami_bank.svg';
-
   /// File path: assets/home/cash_out/success.svg
   String get success => 'assets/home/cash_out/success.svg';
 
   /// List of all assets
-  List<String> get values => [
-    agent,
-    atm,
-    basicBank,
-    bracBank,
-    islamiBank,
-    success,
-  ];
+  List<String> get values => [agent, atm, success];
 }
 
 class $AssetsHomePayBillGen {
@@ -170,6 +173,16 @@ class $AssetsHomeRemittanceGen {
 
   /// List of all assets
   List<String> get values => [payoneer, paypal, wind, wise];
+}
+
+class $AssetsHomeSendMoneyGen {
+  const $AssetsHomeSendMoneyGen();
+
+  /// File path: assets/home/send_money/sucess.svg
+  String get sucess => 'assets/home/send_money/sucess.svg';
+
+  /// List of all assets
+  List<String> get values => [sucess];
 }
 
 class $AssetsHomeTopSectionGen {

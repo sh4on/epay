@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/app_strings.dart';
-import '../../../../core/constants/app_typography.dart';
+import '../../core/constants/app_strings.dart';
+import '../../core/constants/app_typography.dart';
 
 class ContactUsRow extends StatelessWidget {
   const ContactUsRow({super.key});

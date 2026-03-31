@@ -1,4 +1,4 @@
-import 'package:epay/modules/auth/screens/widgets/contact_us_row.dart';
+import 'package:epay/shared/common_widgets/contact_us_row.dart';
 import 'package:epay/modules/auth/screens/widgets/otp_box_row.dart';
 import 'package:epay/modules/auth/screens/widgets/resend_row.dart';
 import 'package:epay/modules/auth/screens/widgets/top_bar.dart';
