@@ -20,7 +20,7 @@ class AppStrings {
   static const String createAccount = 'Create an account';
   static const String phoneNumber = 'Phone Number';
   static const String enterSixDigitPin = 'Enter 6 Digit PIN';
-  static const String enterFourDigitPin = 'Enter 4 Digit PIN';
+  static const String enterFourDigitPin = 'Enter 6 Digit PIN';
   static const String reEnterPin = 'Re-Enter PIN';
   static const String forgotPin = 'Forgot PIN ?';
   static const String logIn = 'Log In';

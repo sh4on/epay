@@ -11,6 +11,7 @@ class AppTextField extends StatefulWidget {
   final bool isPassword;
   final bool isRequired;
   final TextInputType keyboardType;
+  final textInputAction;
   final List<TextInputFormatter>? inputFormatters;
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
@@ -34,6 +35,7 @@ class AppTextField extends StatefulWidget {
     this.readOnly = false,
     this.onTap,
     this.maxLength,
+    this.textInputAction = TextInputAction.next,
   });
 
   @override
@@ -69,6 +71,8 @@ class _AppTextFieldState extends State<AppTextField> {
 
         // text field
         TextFormField(
+          textInputAction: widget.textInputAction,
+          onTapOutside: (event) => FocusScope.of(context).unfocus(),
           controller: widget.controller,
           obscureText: widget.isPassword ? _obscureText : false,
           keyboardType: widget.keyboardType,
@@ -85,17 +89,17 @@ class _AppTextFieldState extends State<AppTextField> {
             // show/hide toggle for password fields
             suffixIcon: widget.isPassword
                 ? IconButton(
-              icon: Icon(
-                _obscureText
-                    ? Icons.visibility_outlined
-                    : Icons.visibility_off_outlined,
-                color: AppColors.textSecondary,
-                size: AppSpacing.iconMd,
-              ),
-              onPressed: () {
-                setState(() => _obscureText = !_obscureText);
-              },
-            )
+                    icon: Icon(
+                      _obscureText
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined,
+                      color: AppColors.textSecondary,
+                      size: AppSpacing.iconMd,
+                    ),
+                    onPressed: () {
+                      setState(() => _obscureText = !_obscureText);
+                    },
+                  )
                 : widget.suffixIcon,
           ),
         ),

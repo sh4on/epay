@@ -1,3 +1,5 @@
+import 'package:epay/modules/auth/screens/widgets/contact_us_row.dart';
+import 'package:epay/modules/auth/screens/widgets/top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -7,7 +9,6 @@ import '../../../core/constants/app_spacing.dart';
 import '../../../core/constants/app_strings.dart';
 import '../../../core/constants/app_typography.dart';
 import '../../../shared/common_widgets/app_button.dart';
-import '../../../shared/common_widgets/language_toggle_button.dart';
 
 class OtpScreen extends GetView<OtpController> {
   const OtpScreen({super.key});
@@ -15,7 +16,6 @@ class OtpScreen extends GetView<OtpController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -25,7 +25,7 @@ class OtpScreen extends GetView<OtpController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // top bar — back + language
-              _OtpTopBar(),
+              TopBar(),
 
               const SizedBox(height: AppSpacing.xxl),
 
@@ -38,14 +38,14 @@ class OtpScreen extends GetView<OtpController> {
               const SizedBox(height: AppSpacing.sm),
 
               // subtitle — sent to phone number
-              Obx(() => Text(
+              Text(
                 '${AppStrings.otpSentTo}${controller.phone}',
                 style: AppTypography.bodyMedium.copyWith(
                   color: AppColors.textSecondary,
                 ),
-              )),
+              ),
 
-              const SizedBox(height: AppSpacing.xxxl),
+              const SizedBox(height: AppSpacing.xxxxl),
 
               // 4 otp input boxes
               _OtpBoxRow(controller: controller),
@@ -67,54 +67,15 @@ class OtpScreen extends GetView<OtpController> {
                 onPressed: controller.onVerifyTap,
               )),
 
-              const SizedBox(height: AppSpacing.xl),
+              const SizedBox(height: AppSpacing.xxxl),
 
               // contact us row
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    '${AppStrings.didYouFaceIssue} ',
-                    style: AppTypography.bodyMedium,
-                  ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Text(
-                      AppStrings.contactUs,
-                      style: AppTypography.link,
-                    ),
-                  ),
-                ],
-              ),
+              ContactUsRow(),
 
               const SizedBox(height: AppSpacing.xl),
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-// otp top bar
-class _OtpTopBar extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: AppSpacing.md),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          GestureDetector(
-            onTap: () => Get.back(),
-            child: const Icon(
-              Icons.arrow_back_ios,
-              size: AppSpacing.iconMd,
-              color: AppColors.textPrimary,
-            ),
-          ),
-          LanguageToggleButton(onTap: () {}),
-        ],
       ),
     );
   }

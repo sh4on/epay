@@ -6,7 +6,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../../../gen/assets.gen.dart';
 import '../controllers/onboarding_controller.dart';
-import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_spacing.dart';
 import '../../../core/constants/app_strings.dart';
 import '../../../core/constants/app_typography.dart';
@@ -18,14 +17,13 @@ class OnboardingScreen extends GetView<OnboardingController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
       body: SafeArea(
         child: Column(
           children: [
             // top bar with language toggle
             OnboardingTopBar(controller: controller),
 
-            // page view — illustrations + text
+            // page view
             Expanded(
               child: PageView(
                 controller: controller.pageController,

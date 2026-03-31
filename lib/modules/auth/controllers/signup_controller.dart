@@ -1,10 +1,11 @@
+import 'package:epay/core/utils/mixins/validation_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../data/repositories/auth_repository.dart';
 import '../../../routes/app_pages.dart';
 import '../../../routes/app_routes.dart';
 
-class SignupController extends GetxController {
+class SignupController extends GetxController with ValidationMixin {
   final AuthRepository _repository;
   SignupController(this._repository);
 
@@ -25,26 +26,6 @@ class SignupController extends GetxController {
     pinController.dispose();
     confirmPinController.dispose();
     super.onClose();
-  }
-
-  // validate phone
-  String? validatePhone(String? value) {
-    if (value == null || value.isEmpty) return 'Phone number is required';
-    return null;
-  }
-
-  // validate 4-digit pin
-  String? validatePin(String? value) {
-    if (value == null || value.isEmpty) return 'PIN is required';
-    if (value.length != 4) return 'PIN must be 4 digits';
-    return null;
-  }
-
-  // validate confirm pin matches
-  String? validateConfirmPin(String? value) {
-    if (value == null || value.isEmpty) return 'Please re-enter your PIN';
-    if (value != pinController.text) return 'PINs do not match';
-    return null;
   }
 
   // sign up button tap

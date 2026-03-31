@@ -9,6 +9,7 @@ class AppSpacing {
   static const double xl = 20.0;
   static const double xxl = 24.0;
   static const double xxxl = 32.0;
+  static const double xxxxl = 48.0;
 
   // screen horizontal padding
   static const double screenPadding = 24.0;

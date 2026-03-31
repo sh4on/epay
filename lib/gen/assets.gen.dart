@@ -11,6 +11,19 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsAuthGen {
+  const $AssetsAuthGen();
+
+  /// File path: assets/auth/fingerprint.svg
+  String get fingerprint => 'assets/auth/fingerprint.svg';
+
+  /// File path: assets/auth/mobile_image.svg
+  String get mobileImage => 'assets/auth/mobile_image.svg';
+
+  /// List of all assets
+  List<String> get values => [fingerprint, mobileImage];
+}
+
 class $AssetsOnboardingGen {
   const $AssetsOnboardingGen();
 
@@ -55,6 +68,7 @@ class $AssetsSplashGen {
 class Assets {
   const Assets._();
 
+  static const $AssetsAuthGen auth = $AssetsAuthGen();
   static const $AssetsOnboardingGen onboarding = $AssetsOnboardingGen();
   static const $AssetsSplashGen splash = $AssetsSplashGen();
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../core/utils/extensions/string_extensions.dart';
 import '../../../core/utils/mixins/validation_mixin.dart';
 import '../../../data/models/user_model.dart';
 import '../../../data/repositories/auth_repository.dart';
@@ -8,6 +9,7 @@ import '../../../routes/app_routes.dart';
 
 class LoginController extends GetxController with ValidationMixin {
   final AuthRepository _repository;
+
   LoginController(this._repository);
 
   // form key
@@ -25,19 +27,6 @@ class LoginController extends GetxController with ValidationMixin {
     phoneController.dispose();
     pinController.dispose();
     super.onClose();
-  }
-
-  // validate phone
-  String? validatePhone(String? value) {
-    if (value == null || value.isEmpty) return 'Phone number is required';
-    return null;
-  }
-
-  // validate pin
-  String? validatePin(String? value) {
-    if (value == null || value.isEmpty) return 'PIN is required';
-    if (value.length != 6) return 'PIN must be 6 digits';
-    return null;
   }
 
   // login button tap
