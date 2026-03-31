@@ -50,7 +50,7 @@ class SignupFormScreen extends GetView<SignupController> {
                       // phone number field
                       AppTextField(
                         label: AppStrings.phoneNumber,
-                        hint: '+8801701*****4',
+                        hint: '8801701*****4',
                         controller: controller.phoneController,
                         isRequired: true,
                         keyboardType: TextInputType.phone,

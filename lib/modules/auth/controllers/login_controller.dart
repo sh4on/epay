@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/utils/extensions/string_extensions.dart';
@@ -16,8 +17,12 @@ class LoginController extends GetxController with ValidationMixin {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   // controllers
-  final TextEditingController phoneController = TextEditingController();
-  final TextEditingController pinController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController(
+    text: kDebugMode ? '01711111111' : null,
+  );
+  final TextEditingController pinController = TextEditingController(
+    text: kDebugMode ? '123456' : null,
+  );
 
   // loading state
   final RxBool isLoading = false.obs;

@@ -335,7 +335,7 @@ class _CardIconPainter extends CustomPainter {
       paint,
     );
 
-    // up arrow — top right
+    // up arrow — top_section right
     canvas.drawLine(Offset(cx + 12, cy - 6), Offset(cx + 12, cy - 12), paint);
     canvas.drawLine(Offset(cx + 9, cy - 9), Offset(cx + 12, cy - 12), paint);
     canvas.drawLine(Offset(cx + 15, cy - 9), Offset(cx + 12, cy - 12), paint);

@@ -149,7 +149,7 @@ class _AppDrawer extends StatelessWidget {
   }
 }
 
-// drawer top header section
+// drawer top_section header section
 class _DrawerHeader extends StatelessWidget {
   final BaseController controller;
 

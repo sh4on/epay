@@ -17,10 +17,10 @@ class EPayLogoPainter extends CustomPainter {
       ..strokeWidth = strokeW
       ..strokeCap = StrokeCap.round;
 
-    // draw the open "c" arc (270° sweep, leaving gap at top-right)
+    // draw the open "c" arc (270° sweep, leaving gap at top_section-right)
     canvas.drawArc(
       Rect.fromCircle(center: Offset(cx, cy), radius: radius),
-      -2.2, // start angle (slightly past top)
+      -2.2, // start angle (slightly past top_section)
       5.0,  // sweep angle (almost full circle)
       false,
       arcPaint,
@@ -31,7 +31,7 @@ class EPayLogoPainter extends CustomPainter {
       ..color = AppColors.accent
       ..style = PaintingStyle.fill;
 
-    // position dot at top-right of arc opening
+    // position dot at top_section-right of arc opening
     final dotX = cx + radius * 0.62;
     final dotY = cy - radius * 0.70;
     canvas.drawCircle(

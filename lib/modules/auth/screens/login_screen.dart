@@ -42,7 +42,7 @@ class LoginScreen extends GetView<LoginController> {
                         // Phone Field
                         AppTextField(
                           label: AppStrings.phoneNumber,
-                          hint: '01701*****4',
+                          hint: '8801701*****4',
                           controller: controller.phoneController,
                           isRequired: true,
                           keyboardType: TextInputType.phone,

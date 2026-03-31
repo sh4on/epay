@@ -24,6 +24,19 @@ class $AssetsAuthGen {
   List<String> get values => [fingerprint, mobileImage];
 }
 
+class $AssetsHomeGen {
+  const $AssetsHomeGen();
+
+  /// Directory path: assets/home/pay_bill
+  $AssetsHomePayBillGen get payBill => const $AssetsHomePayBillGen();
+
+  /// Directory path: assets/home/remittance
+  $AssetsHomeRemittanceGen get remittance => const $AssetsHomeRemittanceGen();
+
+  /// Directory path: assets/home/top_section
+  $AssetsHomeTopSectionGen get topSection => const $AssetsHomeTopSectionGen();
+}
+
 class $AssetsOnboardingGen {
   const $AssetsOnboardingGen();
 
@@ -65,10 +78,111 @@ class $AssetsSplashGen {
   List<dynamic> get values => [bottomBgGraphic, splashLogo, topBgGraphic];
 }
 
+class $AssetsHomePayBillGen {
+  const $AssetsHomePayBillGen();
+
+  /// File path: assets/home/pay_bill/cable_network.svg
+  String get cableNetwork => 'assets/home/pay_bill/cable_network.svg';
+
+  /// File path: assets/home/pay_bill/credit_card.svg
+  String get creditCard => 'assets/home/pay_bill/credit_card.svg';
+
+  /// File path: assets/home/pay_bill/electricity.svg
+  String get electricity => 'assets/home/pay_bill/electricity.svg';
+
+  /// File path: assets/home/pay_bill/gas.svg
+  String get gas => 'assets/home/pay_bill/gas.svg';
+
+  /// File path: assets/home/pay_bill/govt_fees.svg
+  String get govtFees => 'assets/home/pay_bill/govt_fees.svg';
+
+  /// File path: assets/home/pay_bill/internet.svg
+  String get internet => 'assets/home/pay_bill/internet.svg';
+
+  /// File path: assets/home/pay_bill/telephone.svg
+  String get telephone => 'assets/home/pay_bill/telephone.svg';
+
+  /// File path: assets/home/pay_bill/water.svg
+  String get water => 'assets/home/pay_bill/water.svg';
+
+  /// List of all assets
+  List<String> get values => [
+    cableNetwork,
+    creditCard,
+    electricity,
+    gas,
+    govtFees,
+    internet,
+    telephone,
+    water,
+  ];
+}
+
+class $AssetsHomeRemittanceGen {
+  const $AssetsHomeRemittanceGen();
+
+  /// File path: assets/home/remittance/payoneer.svg
+  String get payoneer => 'assets/home/remittance/payoneer.svg';
+
+  /// File path: assets/home/remittance/paypal.svg
+  String get paypal => 'assets/home/remittance/paypal.svg';
+
+  /// File path: assets/home/remittance/wind.svg
+  String get wind => 'assets/home/remittance/wind.svg';
+
+  /// File path: assets/home/remittance/wise.svg
+  String get wise => 'assets/home/remittance/wise.svg';
+
+  /// List of all assets
+  List<String> get values => [payoneer, paypal, wind, wise];
+}
+
+class $AssetsHomeTopSectionGen {
+  const $AssetsHomeTopSectionGen();
+
+  /// File path: assets/home/top_section/add_mone.svg
+  String get addMone => 'assets/home/top_section/add_mone.svg';
+
+  /// File path: assets/home/top_section/cach_in.svg
+  String get cachIn => 'assets/home/top_section/cach_in.svg';
+
+  /// File path: assets/home/top_section/cach_out.svg
+  String get cachOut => 'assets/home/top_section/cach_out.svg';
+
+  /// File path: assets/home/top_section/express_card_recharge.svg
+  String get expressCardRecharge =>
+      'assets/home/top_section/express_card_recharge.svg';
+
+  /// File path: assets/home/top_section/make_payment.svg
+  String get makePayment => 'assets/home/top_section/make_payment.svg';
+
+  /// File path: assets/home/top_section/mobile_recharge.svg
+  String get mobileRecharge => 'assets/home/top_section/mobile_recharge.svg';
+
+  /// File path: assets/home/top_section/mrt_recharge.svg
+  String get mrtRecharge => 'assets/home/top_section/mrt_recharge.svg';
+
+  /// File path: assets/home/top_section/send_money.svg
+  String get sendMoney => 'assets/home/top_section/send_money.svg';
+
+  /// List of all assets
+  List<String> get values => [
+    addMone,
+    cachIn,
+    cachOut,
+    expressCardRecharge,
+    makePayment,
+    mobileRecharge,
+    mrtRecharge,
+    sendMoney,
+  ];
+}
+
 class Assets {
   const Assets._();
 
   static const $AssetsAuthGen auth = $AssetsAuthGen();
+  static const $AssetsHomeGen home = $AssetsHomeGen();
   static const $AssetsOnboardingGen onboarding = $AssetsOnboardingGen();
   static const $AssetsSplashGen splash = $AssetsSplashGen();
 }

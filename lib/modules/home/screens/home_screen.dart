@@ -1,3 +1,4 @@
+import 'package:epay/shared/common_widgets/double_tap_to_exit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
@@ -18,61 +19,63 @@ class HomeScreen extends StatelessWidget {
     final homeController = Get.find<HomeController>();
     final baseController = Get.find<BaseController>();
 
-    return Scaffold(
-      backgroundColor: AppColors.surface,
-      body: Obx(() {
-        // loading state
-        if (homeController.status.value.isLoading) {
-          return const LoadingStateWidget(loadingMessage: 'Loading your dashboard...');
-        }
+    return DoubleTapToExit(
+      child: Scaffold(
+        backgroundColor: AppColors.surface,
+        body: Obx(() {
+          // loading state
+          if (homeController.status.value.isLoading) {
+            return const LoadingStateWidget(loadingMessage: 'Loading your dashboard...');
+          }
 
-        // error state
-        if (homeController.status.value.isError) {
-          return ErrorStateWidget(onRetry: homeController.fetchHomeData);
-        }
+          // error state
+          if (homeController.status.value.isError) {
+            return ErrorStateWidget(onRetry: homeController.fetchHomeData);
+          }
 
-        return CustomScrollView(
-          slivers: [
-            // app bar with user info + points badge
-            SliverToBoxAdapter(
-              child: _HomeAppBar(baseController: baseController),
-            ),
+          return CustomScrollView(
+            slivers: [
+              // app bar with user info + points badge
+              SliverToBoxAdapter(
+                child: _HomeAppBar(baseController: baseController),
+              ),
 
-            // balance card
-            SliverToBoxAdapter(
-              child: _BalanceCard(baseController: baseController),
-            ),
+              // balance card
+              SliverToBoxAdapter(
+                child: _BalanceCard(baseController: baseController),
+              ),
 
-            // white content area
-            SliverToBoxAdapter(
-              child: Container(
-                color: AppColors.white,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: AppSpacing.xl),
+              // white content area
+              SliverToBoxAdapter(
+                child: Container(
+                  color: AppColors.white,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: AppSpacing.xl),
 
-                    // services grid — first 4 + see more
-                    _ServicesGrid(controller: homeController),
+                      // services grid — first 4 + see more
+                      _ServicesGrid(controller: homeController),
 
-                    const SizedBox(height: AppSpacing.lg),
+                      const SizedBox(height: AppSpacing.lg),
 
-                    // pay bill section
-                    _PayBillSection(controller: homeController),
+                      // pay bill section
+                      _PayBillSection(controller: homeController),
 
-                    const SizedBox(height: AppSpacing.lg),
+                      const SizedBox(height: AppSpacing.lg),
 
-                    // remittance section
-                    _RemittanceSection(controller: homeController),
+                      // remittance section
+                      _RemittanceSection(controller: homeController),
 
-                    const SizedBox(height: AppSpacing.xxxl),
-                  ],
+                      const SizedBox(height: AppSpacing.xxxl),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
-        );
-      }),
+            ],
+          );
+        }),
+      ),
     );
   }
 }
@@ -139,7 +142,7 @@ class _HomeAppBar extends StatelessWidget {
   }
 }
 
-// gold points badge — top right
+// gold points badge — top_section right
 class _PointsBadge extends StatelessWidget {
   final String points;
 

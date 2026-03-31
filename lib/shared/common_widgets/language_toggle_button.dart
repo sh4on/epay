@@ -4,7 +4,7 @@ import '../../core/constants/app_spacing.dart';
 import '../../core/constants/app_strings.dart';
 import '../../core/constants/app_typography.dart';
 
-// language toggle pill shown in top-right of auth screens
+// language toggle pill shown in top_section-right of auth screens
 class LanguageToggleButton extends StatelessWidget {
   final VoidCallback? onTap;
 
