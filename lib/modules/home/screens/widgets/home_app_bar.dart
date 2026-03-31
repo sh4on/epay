@@ -1,6 +1,7 @@
 import 'package:epay/modules/home/screens/widgets/point_badge.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_spacing.dart';
@@ -45,29 +46,68 @@ class HomeAppBar extends StatelessWidget {
             child: Row(
               children: [
                 // avatar circle
-                Container(
-                  width: 38,
-                  height: 38,
-                  decoration: const BoxDecoration(
-                    color: AppColors.accent,
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Icons.person,
-                    color: AppColors.white,
-                    size: AppSpacing.iconMd,
-                  ),
+                Stack(
+                  children: [
+                    Container(
+                      width: 42,
+                      height: 42,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: AppColors.white, width: 2),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: Obx(() {
+                          final avatarUrl =
+                              baseController.user.value?.avatarUrl;
+
+                          return CachedNetworkImage(
+                            imageUrl:
+                                avatarUrl ??
+                                'https://cdn.vectorstock.com/i/1000v/51/05/male-profile-avatar-with-brown-hair-vector-12055105.jpg',
+                            fit: BoxFit.cover,
+                            placeholder: (context, url) => const Center(
+                              child: CircularProgressIndicator(strokeWidth: 2),
+                            ),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.person),
+                          );
+                        }),
+                      ),
+                    ),
+
+                    // 2. Orange Status Dot
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: Container(
+                        width: 12,
+                        height: 12,
+                        decoration: BoxDecoration(
+                          color: Colors.orange,
+                          // Or use AppColors.orange if defined
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: AppColors.white,
+                            width: 1.5,
+                          ), // Cutout effect
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(width: AppSpacing.sm),
 
                 // user name
-                Obx(() => Text(
-                  baseController.user.value?.name ?? '',
-                  style: AppTypography.titleLarge.copyWith(
-                    color: AppColors.white,
-                    fontWeight: FontWeight.bold,
+                Obx(
+                  () => Text(
+                    baseController.user.value?.name ?? '',
+                    style: AppTypography.titleLarge.copyWith(
+                      color: AppColors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                )),
+                ),
               ],
             ),
           ),
