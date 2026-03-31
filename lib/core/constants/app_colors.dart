@@ -42,4 +42,8 @@ class AppColors {
 
   // otp box
   static const Color otpBoxFilled = Color(0xFFFDE8C0);
+
+  // for gradient
+  static const Color primaryMid = Color(0xFF2A3F8F);
+  static const Color primaryVibrant = Color(0xFF3D5BB5);
 }
