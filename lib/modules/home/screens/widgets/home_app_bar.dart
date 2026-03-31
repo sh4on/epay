@@ -39,7 +39,9 @@ class HomeAppBar extends StatelessWidget {
         children: [
           // drawer menu icon + avatar + name
           GestureDetector(
-            onTap: () => Scaffold.of(context).openDrawer(),
+            onTap: () {
+              baseController.openDrawer();
+            },
             child: Row(
               children: [
                 // avatar circle

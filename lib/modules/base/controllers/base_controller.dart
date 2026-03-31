@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../data/models/user_model.dart';
 
@@ -10,6 +11,8 @@ class BaseController extends GetxController {
 
   // balance visibility toggle
   final RxBool isBalanceVisible = true.obs;
+
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void onInit() {
@@ -29,6 +32,10 @@ class BaseController extends GetxController {
         avatarUrl: null,
       );
     }
+  }
+
+  void openDrawer() {
+    scaffoldKey.currentState?.openDrawer();
   }
 
   // switch bottom nav tab
