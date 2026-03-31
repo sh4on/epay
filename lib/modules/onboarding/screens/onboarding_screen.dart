@@ -80,7 +80,7 @@ class OnboardingScreen extends GetView<OnboardingController> {
             const SizedBox(height: AppSpacing.lg),
 
             // skip text link
-            GestureDetector(
+            InkWell(
               onTap: controller.onSkipTap,
               child: Text(AppStrings.skip, style: AppTypography.link),
             ),
