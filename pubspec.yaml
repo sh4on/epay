@@ -73,6 +73,7 @@ flutter:
     - assets/home/top_section/
     - assets/home/pay_bill/
     - assets/home/remittance/
+    - assets/home/cash_out/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

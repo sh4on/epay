@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../../../data/models/contact_model.dart';
 import '../../../data/models/bank_model.dart';
 import '../../../data/repositories/cash_out_repository.dart';
+import '../../../gen/assets.gen.dart';
 import '../../../routes/app_pages.dart';
 import '../../../routes/app_routes.dart';
 
-// cash out tab enum
 enum CashOutTab { agent, atm }
 
 class CashOutController extends GetxController {
   final CashOutRepository _repository;
+
   CashOutController(this._repository);
 
-  // ── tab ──────────────────────────────────────────────────────────────────
+  // tab
   final Rx<CashOutTab> activeTab = CashOutTab.agent.obs;
 
-  // ── agent tab ─────────────────────────────────────────────────────────────
+  // agent tab
   final TextEditingController agentNumberController = TextEditingController();
+  final TextEditingController amountTextController = TextEditingController();
+  final FocusNode amountFocusNode = FocusNode();
 
   // contacts load status
   Rx<RxStatus> contactsStatus = Rx<RxStatus>(RxStatus.loading());
@@ -28,7 +32,7 @@ class CashOutController extends GetxController {
   // all contacts list
   RxList<ContactModel> allContacts = <ContactModel>[].obs;
 
-  // ── atm tab ───────────────────────────────────────────────────────────────
+  // ── atm tab
   final TextEditingController bankSearchController = TextEditingController();
 
   // banks load status
@@ -40,7 +44,7 @@ class CashOutController extends GetxController {
   // filtered banks based on search
   RxList<BankModel> filteredBanks = <BankModel>[].obs;
 
-  // ── confirm screen ────────────────────────────────────────────────────────
+  // confirm screen
   // selected agent/contact phone
   final RxString selectedPhone = ''.obs;
 
@@ -159,9 +163,11 @@ class CashOutController extends GetxController {
       filteredBanks.value = partnerBanks;
     } else {
       filteredBanks.value = partnerBanks
-          .where((b) =>
-      b.name.toLowerCase().contains(query) ||
-          b.branchName.toLowerCase().contains(query))
+          .where(
+            (b) =>
+                b.name.toLowerCase().contains(query) ||
+                b.branchName.toLowerCase().contains(query),
+          )
           .toList();
     }
   }
@@ -263,17 +269,15 @@ class _CashOutSuccessDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       backgroundColor: const Color(0xFFFFFFFF),
       child: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // orange checkmark illustration
-            _CashOutSuccessIllustration(),
+            // image
+            SvgPicture.asset(Assets.home.cashOut.success),
 
             const SizedBox(height: 16),
 
@@ -293,13 +297,9 @@ class _CashOutSuccessDialog extends StatelessWidget {
             RichText(
               textAlign: TextAlign.center,
               text: TextSpan(
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: Color(0xFF8A8A9A),
-                ),
+                style: const TextStyle(fontSize: 14, color: Color(0xFF8A8A9A)),
                 children: [
-                  const TextSpan(
-                      text: 'You have successfully\nWithdraw '),
+                  const TextSpan(text: 'You have successfully\nWithdraw '),
                   TextSpan(
                     text: 'TK ${amount.toStringAsFixed(0)}',
                     style: const TextStyle(
@@ -344,16 +344,16 @@ class _CashOutSuccessDialog extends StatelessWidget {
 }
 
 // orange circular checkmark illustration for cash out success
-class _CashOutSuccessIllustration extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 100,
-      height: 100,
-      child: CustomPaint(painter: _OrangeCheckPainter()),
-    );
-  }
-}
+// class _CashOutSuccessIllustration extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return SizedBox(
+//       width: 100,
+//       height: 100,
+//       child: CustomPaint(painter: _OrangeCheckPainter()),
+//     );
+//   }
+// }
 
 class _OrangeCheckPainter extends CustomPainter {
   @override

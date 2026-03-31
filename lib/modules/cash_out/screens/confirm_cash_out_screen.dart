@@ -1,3 +1,5 @@
+import 'package:epay/modules/cash_out/screens/widgets/confirm_section.dart';
+import 'package:epay/modules/cash_out/screens/widgets/hidden_amount_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -13,7 +15,6 @@ class ConfirmCashOutScreen extends GetView<CashOutController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
       appBar: AppBar(
         // title with regular + bold split
         title: RichText(
@@ -33,7 +34,7 @@ class ConfirmCashOutScreen extends GetView<CashOutController> {
         ),
         leading: GestureDetector(
           onTap: () => Get.back(),
-          child: const Icon(Icons.arrow_back_ios),
+          child: const Icon(Icons.arrow_back_outlined),
         ),
       ),
       body: Column(
@@ -51,7 +52,7 @@ class ConfirmCashOutScreen extends GetView<CashOutController> {
                   const SizedBox(height: AppSpacing.xl),
 
                   // agent section
-                  _ConfirmSection(
+                  ConfirmSection(
                     label: AppStrings.agent,
                     child: Obx(() => Text(
                       controller.selectedPhone.value,
@@ -67,19 +68,31 @@ class ConfirmCashOutScreen extends GetView<CashOutController> {
                   const SizedBox(height: AppSpacing.xl),
 
                   // amount section
-                  _ConfirmSection(
+                  ConfirmSection(
                     label: AppStrings.amount,
                     child: Column(
                       children: [
                         const SizedBox(height: AppSpacing.xl),
 
                         // amount display — large centered
-                        Obx(() => Text(
-                          'TK: ${controller.enteredAmount.value.toStringAsFixed(0)}',
-                          style: controller.enteredAmount.value > 0
-                              ? AppTypography.amountDisplay
-                              : AppTypography.amountDisplay.copyWith(
-                            color: AppColors.textHint,
+                        Obx(() => InkWell(
+                          onTap: () {
+                            controller.amountFocusNode.requestFocus();
+                          },
+                          borderRadius: BorderRadius.circular(8),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 8,
+                            ),
+                            child: Text(
+                              'TK: ${controller.enteredAmount.value.toStringAsFixed(0)}',
+                              style: controller.enteredAmount.value > 0
+                                  ? AppTypography.amountDisplay
+                                  : AppTypography.amountDisplay.copyWith(
+                                color: AppColors.textHint,
+                              ),
+                            ),
                           ),
                         )),
 
@@ -101,7 +114,7 @@ class ConfirmCashOutScreen extends GetView<CashOutController> {
                   const SizedBox(height: AppSpacing.xl),
 
                   // hidden numpad input
-                  _HiddenAmountInput(controller: controller),
+                  HiddenAmountInput(controller: controller),
                 ],
               ),
             ),
@@ -147,75 +160,6 @@ class ConfirmCashOutScreen extends GetView<CashOutController> {
             }),
           ),
         ],
-      ),
-    );
-  }
-}
-
-// confirm detail section with label + child
-class _ConfirmSection extends StatelessWidget {
-  final String label;
-  final Widget child;
-
-  const _ConfirmSection({required this.label, required this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // section label
-        Text(label, style: AppTypography.titleMedium),
-
-        const SizedBox(height: AppSpacing.md),
-
-        // section content centered
-        Center(child: child),
-
-        const SizedBox(height: AppSpacing.xl),
-      ],
-    );
-  }
-}
-
-// invisible text field to capture numpad input for amount
-class _HiddenAmountInput extends StatelessWidget {
-  final CashOutController controller;
-
-  const _HiddenAmountInput({required this.controller});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: GestureDetector(
-        onTap: () {
-          // show keyboard to enter amount
-          FocusScope.of(context).requestFocus(FocusNode());
-        },
-        child: Column(
-          children: [
-            SizedBox(
-              width: 1,
-              height: 1,
-              child: TextField(
-                keyboardType: TextInputType.number,
-                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                autofocus: true,
-                onChanged: controller.onAmountChanged,
-                decoration: const InputDecoration(border: InputBorder.none),
-                style: const TextStyle(fontSize: 1, color: Colors.transparent),
-              ),
-            ),
-
-            // tap to enter amount hint
-            Text(
-              'Tap to enter amount',
-              style: AppTypography.bodySmall.copyWith(
-                color: AppColors.textHint,
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

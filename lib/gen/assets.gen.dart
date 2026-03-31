@@ -27,6 +27,9 @@ class $AssetsAuthGen {
 class $AssetsHomeGen {
   const $AssetsHomeGen();
 
+  /// Directory path: assets/home/cash_out
+  $AssetsHomeCashOutGen get cashOut => const $AssetsHomeCashOutGen();
+
   /// Directory path: assets/home/pay_bill
   $AssetsHomePayBillGen get payBill => const $AssetsHomePayBillGen();
 
@@ -76,6 +79,38 @@ class $AssetsSplashGen {
 
   /// List of all assets
   List<dynamic> get values => [bottomBgGraphic, splashLogo, topBgGraphic];
+}
+
+class $AssetsHomeCashOutGen {
+  const $AssetsHomeCashOutGen();
+
+  /// File path: assets/home/cash_out/agent.svg
+  String get agent => 'assets/home/cash_out/agent.svg';
+
+  /// File path: assets/home/cash_out/atm.svg
+  String get atm => 'assets/home/cash_out/atm.svg';
+
+  /// File path: assets/home/cash_out/basic_bank.svg
+  String get basicBank => 'assets/home/cash_out/basic_bank.svg';
+
+  /// File path: assets/home/cash_out/brac_bank.svg
+  String get bracBank => 'assets/home/cash_out/brac_bank.svg';
+
+  /// File path: assets/home/cash_out/islami_bank.svg
+  String get islamiBank => 'assets/home/cash_out/islami_bank.svg';
+
+  /// File path: assets/home/cash_out/success.svg
+  String get success => 'assets/home/cash_out/success.svg';
+
+  /// List of all assets
+  List<String> get values => [
+    agent,
+    atm,
+    basicBank,
+    bracBank,
+    islamiBank,
+    success,
+  ];
 }
 
 class $AssetsHomePayBillGen {
