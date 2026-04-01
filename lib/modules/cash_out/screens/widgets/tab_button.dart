@@ -28,7 +28,7 @@ class TabButton extends StatelessWidget {
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 250),
-        height: 100,
+        height: 120,
         width: 100,
         decoration: BoxDecoration(
           color: isActive ? AppColors.primary : AppColors.white,
