@@ -36,7 +36,10 @@ class LoginScreen extends GetView<LoginController> {
                       children: [
                         TopBar(),
                         const SizedBox(height: AppSpacing.xxl),
-                        Text(AppStrings.loginTitle, style: AppTypography.headlineLarge),
+                        Text(
+                          AppStrings.loginTitle,
+                          style: AppTypography.headlineLarge,
+                        ),
                         const SizedBox(height: AppSpacing.xxl),
 
                         // Phone Field
@@ -46,7 +49,9 @@ class LoginScreen extends GetView<LoginController> {
                           controller: controller.phoneController,
                           isRequired: true,
                           keyboardType: TextInputType.phone,
-                          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly,
+                          ],
                           validator: controller.validatePhone,
                         ),
 
@@ -70,19 +75,28 @@ class LoginScreen extends GetView<LoginController> {
                           alignment: Alignment.centerLeft,
                           child: GestureDetector(
                             onTap: controller.onForgotPinTap,
-                            child: Text(AppStrings.forgotPin, style: AppTypography.link),
+                            child: const Text(
+                              AppStrings.forgotPin,
+                              style: AppTypography.link,
+                            ),
                           ),
                         ),
 
                         const SizedBox(height: AppSpacing.xxl),
 
                         // Login Button
-                        Obx(() => controller.isLoading.value
-                            ? const Center(child: CircularProgressIndicator(color: AppColors.primary))
-                            : AppButton(
-                          label: AppStrings.logIn,
-                          onPressed: controller.onLoginTap,
-                        )),
+                        Obx(
+                          () => controller.isLoading.value
+                              ? const Center(
+                                  child: CircularProgressIndicator(
+                                    color: AppColors.primary,
+                                  ),
+                                )
+                              : AppButton(
+                                  label: AppStrings.logIn,
+                                  onPressed: controller.onLoginTap,
+                                ),
+                        ),
 
                         const SizedBox(height: AppSpacing.xxxxl),
 
@@ -106,13 +120,13 @@ class LoginScreen extends GetView<LoginController> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
+                            const Text(
                               '${AppStrings.didYouFaceIssue} ',
                               style: AppTypography.bodyMedium,
                             ),
                             GestureDetector(
                               onTap: () {},
-                              child: Text(
+                              child: const Text(
                                 AppStrings.contactUs,
                                 style: AppTypography.link,
                               ),

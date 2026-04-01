@@ -46,7 +46,7 @@ class SignupWelcomeScreen extends StatelessWidget {
                       SizedBox(height: context.height * 0.09),
 
                       // title text
-                      Center(
+                      const Center(
                         child: Text(
                           AppStrings.signUpWelcomeTitle,
                           style: AppTypography.headlineLarge,
@@ -86,7 +86,7 @@ class SignupWelcomeScreen extends StatelessWidget {
                     child: Text(
                       AppStrings.logIn,
                       style: AppTypography.labelLarge.copyWith(
-                        color: AppColors.textSecondary,
+                        color: AppColors.white,
                       ),
                     ),
                   ),
