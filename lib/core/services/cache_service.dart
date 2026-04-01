@@ -3,10 +3,6 @@ import 'package:get_storage/get_storage.dart';
 class CacheService {
   static CacheService instance = CacheService._internal();
 
-  factory CacheService() {
-    return instance;
-  }
-
   CacheService._internal();
 
   final _box = GetStorage();
