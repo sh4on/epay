@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_spacing.dart';
 import '../../../../core/constants/app_typography.dart';
+import '../../../../core/utils/extensions/context_extensions.dart';
 
 class TabButton extends StatelessWidget {
   final String iconPath;
@@ -11,7 +12,8 @@ class TabButton extends StatelessWidget {
   final bool isActive;
   final VoidCallback onTap;
 
-  const TabButton({super.key, 
+  const TabButton({
+    super.key,
     required this.iconPath,
     required this.label,
     required this.isActive,
@@ -24,8 +26,8 @@ class TabButton extends StatelessWidget {
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 250),
-        height: 120,
-        width: 100,
+        height: context.screenHeight * 0.13,
+        //width: 100,
         decoration: BoxDecoration(
           color: isActive ? AppColors.primary : AppColors.white,
           borderRadius: BorderRadius.circular(AppSpacing.radiusMd),

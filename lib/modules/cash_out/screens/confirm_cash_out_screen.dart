@@ -8,8 +8,25 @@ import '../../../core/constants/app_spacing.dart';
 import '../../../core/constants/app_strings.dart';
 import '../../../core/constants/app_typography.dart';
 
-class ConfirmCashOutScreen extends GetView<CashOutController> {
+class ConfirmCashOutScreen extends StatefulWidget {
   const ConfirmCashOutScreen({super.key});
+
+  @override
+  State<ConfirmCashOutScreen> createState() => _ConfirmCashOutScreenState();
+}
+
+class _ConfirmCashOutScreenState extends State<ConfirmCashOutScreen> {
+  final CashOutController controller = Get.find<CashOutController>();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        controller.amountFocusNode.requestFocus();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +96,7 @@ class ConfirmCashOutScreen extends GetView<CashOutController> {
                         children: [
                           const SizedBox(height: AppSpacing.xl),
 
-                          // amount display — large centered
+                          // amount display
                           Obx(
                             () => InkWell(
                               onTap: () {
@@ -128,7 +145,7 @@ class ConfirmCashOutScreen extends GetView<CashOutController> {
             ),
           ),
 
-          // confirm button — disabled when amount is 0
+          // confirm button
           Padding(
             padding: const EdgeInsets.all(AppSpacing.screenPadding),
             child: Obx(() {

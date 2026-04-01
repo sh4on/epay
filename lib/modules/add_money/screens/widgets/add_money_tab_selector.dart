@@ -1,3 +1,4 @@
+import 'package:epay/core/utils/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -72,7 +73,7 @@ class _AddMoneyTab extends StatelessWidget {
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 250),
-        height: 120,
+        height: context.screenHeight * 0.13,
         decoration: BoxDecoration(
           color: isActive ? AppColors.primary : AppColors.white,
           borderRadius: BorderRadius.circular(AppSpacing.radiusMd),

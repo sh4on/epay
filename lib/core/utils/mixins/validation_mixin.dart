@@ -11,27 +11,16 @@ mixin ValidationMixin {
   }
 
   // validate pin
-  String? validatePin(String? value) {
+  String? validatePassword(String? value) {
     if (value == null || value.isEmpty) return 'PIN is required';
-    if (value.length != 6) return 'PIN must be 6 digits';
+    if (value.length < 6) return 'PIN must be 6 digits';
     return null;
   }
 
   // validate confirm pin matches
-  String? validateConfirmPin(String? value, String original) {
+  String? validateConfirmPassword(String? value, String original) {
     if (value == null || value.isEmpty) return 'Please re-enter your PIN';
     if (value != original) return 'PINs do not match';
-    return null;
-  }
-
-  // validate 6 digit pin
-  String? validateSixDigitPin(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'PIN is required';
-    }
-    if (value.length != 6) {
-      return 'PIN must be 6 digits';
-    }
     return null;
   }
 

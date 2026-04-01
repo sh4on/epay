@@ -9,8 +9,25 @@ import '../../../core/constants/app_spacing.dart';
 import '../../../core/constants/app_strings.dart';
 import '../../../core/constants/app_typography.dart';
 
-class ConfirmSendMoneyScreen extends GetView<SendMoneyController> {
+class ConfirmSendMoneyScreen extends StatefulWidget {
   const ConfirmSendMoneyScreen({super.key});
+
+  @override
+  State<ConfirmSendMoneyScreen> createState() => _ConfirmSendMoneyScreenState();
+}
+
+class _ConfirmSendMoneyScreenState extends State<ConfirmSendMoneyScreen> {
+  final SendMoneyController controller = Get.find<SendMoneyController>();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        controller.amountFocusNode.requestFocus();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +96,7 @@ class ConfirmSendMoneyScreen extends GetView<SendMoneyController> {
                       children: [
                         const SizedBox(height: AppSpacing.xl),
 
-                        // amount display — large centered with clickable area
+                        // amount display
                         Obx(
                           () => InkWell(
                             onTap: () {
@@ -130,7 +147,7 @@ class ConfirmSendMoneyScreen extends GetView<SendMoneyController> {
             ),
           ),
 
-          // confirm button — disabled when no amount entered
+          // confirm button
           ConfirmButton(controller: controller),
 
           SizedBox(

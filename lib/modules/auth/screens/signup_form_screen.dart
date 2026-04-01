@@ -70,7 +70,7 @@ class SignupFormScreen extends GetView<SignupController> {
                         isRequired: true,
                         isPassword: true,
                         keyboardType: TextInputType.text,
-                        validator: controller.validatePin,
+                        validator: controller.validatePassword,
                       ),
 
                       const SizedBox(height: AppSpacing.lg),
@@ -84,7 +84,7 @@ class SignupFormScreen extends GetView<SignupController> {
                         isPassword: true,
                         keyboardType: TextInputType.text,
                         validator: (value) {
-                          return controller.validateConfirmPin(
+                          return controller.validateConfirmPassword(
                             value,
                             controller.pinController.text,
                           );

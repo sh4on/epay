@@ -1,3 +1,4 @@
+import 'package:epay/core/utils/extensions/context_extensions.dart';
 import 'package:epay/modules/onboarding/screens/widgets/dot_indicator.dart';
 import 'package:epay/modules/onboarding/screens/widgets/onboarding_page.dart';
 import 'package:epay/modules/onboarding/screens/widgets/onboarding_top_bar.dart';
@@ -33,6 +34,8 @@ class OnboardingScreen extends GetView<OnboardingController> {
                   OnboardingPage(
                     imageWidget: SvgPicture.asset(
                       Assets.onboarding.firstOnboardingImage,
+                      height: context.screenHeight * 0.3,
+                      width: context.screenWidth * 0.75,
                     ),
                     title: AppStrings.onboarding1Title,
                   ),

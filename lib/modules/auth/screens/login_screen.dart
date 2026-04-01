@@ -57,7 +57,7 @@ class LoginScreen extends GetView<LoginController> {
 
                         const SizedBox(height: AppSpacing.lg),
 
-                        // PIN Field
+                        // password Field
                         AppTextField(
                           label: AppStrings.enterSixDigitPin,
                           hint: '123456',
@@ -65,7 +65,7 @@ class LoginScreen extends GetView<LoginController> {
                           isRequired: true,
                           isPassword: true,
                           keyboardType: TextInputType.text,
-                          validator: controller.validatePin,
+                          validator: controller.validatePassword,
                           textInputAction: TextInputAction.done,
                         ),
 
