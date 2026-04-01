@@ -29,10 +29,8 @@ class AddMoneyController extends GetxController {
   final AddMoneyRepository _repository;
   AddMoneyController(this._repository);
 
-  // ── tabs ──────────────────────────────────────────────────────────────────
+  // tabs
   final Rx<AddMoneyTab> activeTab = AddMoneyTab.bankToEkpay.obs;
-
-  // ── sources ───────────────────────────────────────────────────────────────
 
   // page status
   Rx<RxStatus> status = Rx<RxStatus>(RxStatus.loading());
@@ -97,26 +95,16 @@ class AddMoneyController extends GetxController {
     selectedCardSourceId.value = id;
   }
 
-  // get current active sources based on tab
-  List<MoneySourceItem> get activeSources =>
-      activeTab.value == AddMoneyTab.bankToEkpay ? bankSources : cardSources;
-
-  // get current selected source id based on tab
-  String get activeSelectedId =>
-      activeTab.value == AddMoneyTab.bankToEkpay
-          ? selectedBankSourceId.value
-          : selectedCardSourceId.value;
-
   // proceed button tap
   Future<void> onProceedTap() async {
     isProcessing.value = true;
 
     final result = await _repository.processAddMoney(
-      sourceId: activeSelectedId,
-      amount: 0, // amount entry handled on next screen — placeholder
-      type: activeTab.value == AddMoneyTab.bankToEkpay
-          ? 'bank'
-          : 'card',
+      sourceId: activeTab.value == AddMoneyTab.bankToEkpay
+          ? selectedBankSourceId.value
+          : selectedCardSourceId.value,
+      amount: 0,
+      type: activeTab.value == AddMoneyTab.bankToEkpay ? 'bank' : 'card',
     );
 
     isProcessing.value = false;
