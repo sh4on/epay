@@ -33,7 +33,10 @@ class ConfirmSendMoneyScreen extends GetView<SendMoneyController> {
           ),
         ),
         leading: GestureDetector(
-          onTap: () => Get.back(),
+          onTap: () {
+            controller.enteredAmount.value = 0.0;
+            Get.back();
+          },
           child: const Icon(Icons.arrow_back),
         ),
       ),
@@ -129,6 +132,12 @@ class ConfirmSendMoneyScreen extends GetView<SendMoneyController> {
 
           // confirm button — disabled when no amount entered
           ConfirmButton(controller: controller),
+
+          SizedBox(
+            height: MediaQuery.of(context).viewInsets.bottom > 0
+                ? 10
+                : kBottomNavigationBarHeight,
+          ),
         ],
       ),
     );

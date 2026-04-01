@@ -32,7 +32,10 @@ class ConfirmCashOutScreen extends GetView<CashOutController> {
           ),
         ),
         leading: GestureDetector(
-          onTap: () => Get.back(),
+          onTap: () {
+            controller.enteredAmount.value = 0;
+            Get.back();
+          },
           child: const Icon(Icons.arrow_back_outlined),
         ),
       ),
@@ -41,84 +44,86 @@ class ConfirmCashOutScreen extends GetView<CashOutController> {
           const Divider(height: 1),
 
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppSpacing.screenPadding,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: AppSpacing.xl),
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.screenPadding,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: AppSpacing.xl),
 
-                  // agent section
-                  ConfirmSection(
-                    label: AppStrings.agent,
-                    child: Obx(
-                      () => Text(
-                        controller.selectedPhone.value,
-                        style: AppTypography.bodyMedium.copyWith(
-                          color: AppColors.textSecondary,
+                    // agent section
+                    ConfirmSection(
+                      label: AppStrings.agent,
+                      child: Obx(
+                        () => Text(
+                          controller.selectedPhone.value,
+                          style: AppTypography.bodyMedium.copyWith(
+                            color: AppColors.textSecondary,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ),
-                  ),
 
-                  const Divider(height: 1),
+                    const Divider(height: 1),
 
-                  const SizedBox(height: AppSpacing.xl),
+                    const SizedBox(height: AppSpacing.xl),
 
-                  // amount section
-                  ConfirmSection(
-                    label: AppStrings.amount,
-                    child: Column(
-                      children: [
-                        const SizedBox(height: AppSpacing.xl),
+                    // amount section
+                    ConfirmSection(
+                      label: AppStrings.amount,
+                      child: Column(
+                        children: [
+                          const SizedBox(height: AppSpacing.xl),
 
-                        // amount display — large centered
-                        Obx(
-                          () => InkWell(
-                            onTap: () {
-                              controller.amountFocusNode.requestFocus();
-                            },
-                            borderRadius: BorderRadius.circular(8),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 12,
-                                vertical: 8,
-                              ),
-                              child: Text(
-                                'TK: ${controller.enteredAmount.value.toStringAsFixed(0)}',
-                                style: controller.enteredAmount.value > 0
-                                    ? AppTypography.amountDisplay
-                                    : AppTypography.amountDisplay.copyWith(
-                                        color: AppColors.textHint,
-                                      ),
+                          // amount display — large centered
+                          Obx(
+                            () => InkWell(
+                              onTap: () {
+                                controller.amountFocusNode.requestFocus();
+                              },
+                              borderRadius: BorderRadius.circular(8),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 8,
+                                ),
+                                child: Text(
+                                  'TK: ${controller.enteredAmount.value.toStringAsFixed(0)}',
+                                  style: controller.enteredAmount.value > 0
+                                      ? AppTypography.amountDisplay
+                                      : AppTypography.amountDisplay.copyWith(
+                                          color: AppColors.textHint,
+                                        ),
+                                ),
                               ),
                             ),
                           ),
-                        ),
 
-                        const SizedBox(height: AppSpacing.lg),
+                          const SizedBox(height: AppSpacing.lg),
 
-                        // available balance
-                        Text(
-                          '${AppStrings.availableBalance} ${controller.availableBalance.toStringAsFixed(0)} TK',
-                          style: AppTypography.bodyMedium.copyWith(
-                            color: AppColors.primary,
+                          // available balance
+                          Text(
+                            '${AppStrings.availableBalance} ${controller.availableBalance.toStringAsFixed(0)} TK',
+                            style: AppTypography.bodyMedium.copyWith(
+                              color: AppColors.primary,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
 
-                  const Divider(height: 1),
+                    const Divider(height: 1),
 
-                  const SizedBox(height: AppSpacing.xl),
+                    const SizedBox(height: AppSpacing.xl),
 
-                  // hidden numpad input
-                  HiddenAmountInput(controller: controller),
-                ],
+                    // hidden numpad input
+                    HiddenAmountInput(controller: controller),
+                  ],
+                ),
               ),
             ),
           ),
@@ -162,6 +167,12 @@ class ConfirmCashOutScreen extends GetView<CashOutController> {
                 ),
               );
             }),
+          ),
+
+          SizedBox(
+            height: MediaQuery.of(context).viewInsets.bottom > 0
+                ? 10
+                : kBottomNavigationBarHeight,
           ),
         ],
       ),

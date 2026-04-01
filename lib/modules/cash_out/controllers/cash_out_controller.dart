@@ -19,7 +19,7 @@ class CashOutController extends GetxController {
   // agent tab
   final TextEditingController agentNumberController = TextEditingController();
   final TextEditingController amountTextController = TextEditingController();
-  final FocusNode amountFocusNode = FocusNode();
+  late FocusNode amountFocusNode;
 
   // contacts load status
   Rx<RxStatus> contactsStatus = Rx<RxStatus>(RxStatus.loading());
@@ -65,11 +65,12 @@ class CashOutController extends GetxController {
     bankSearchController.addListener(_onBankSearch);
   }
 
-  @override
-  void onClose() {
-    agentNumberController.dispose();
-    bankSearchController.dispose();
-    super.onClose();
+  // reset amount
+  void resetAmount() {
+    enteredAmount.value = 0.0;
+    if (amountTextController.text.isNotEmpty) {
+      amountTextController.clear();
+    }
   }
 
   // switch between agent and atm tabs
@@ -184,6 +185,8 @@ class CashOutController extends GetxController {
 
   // confirm cash out
   Future<void> onConfirmTap(BuildContext context) async {
+    FocusScope.of(context).unfocus();
+
     if (enteredAmount.value <= 0) {
       Get.snackbar(
         'Invalid Amount',

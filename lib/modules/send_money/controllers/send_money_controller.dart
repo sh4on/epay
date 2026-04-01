@@ -120,6 +120,8 @@ class SendMoneyController extends GetxController {
 
   // confirm send money
   Future<void> onConfirmTap(BuildContext context) async {
+    FocusScope.of(context).unfocus();
+
     if (enteredAmount.value <= 0) {
       Get.snackbar(
         'Invalid Amount',
