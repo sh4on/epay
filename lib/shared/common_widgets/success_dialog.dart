@@ -91,10 +91,7 @@ class SuccessDialog extends StatelessWidget {
             const SizedBox(height: AppSpacing.xxl),
 
             // back to home button
-            AppButton(
-              label: buttonLabel,
-              onPressed: onButtonPressed,
-            ),
+            AppButton(label: buttonLabel, onPressed: onButtonPressed),
           ],
         ),
       ),

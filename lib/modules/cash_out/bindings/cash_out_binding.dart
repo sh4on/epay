@@ -8,11 +8,9 @@ class CashOutBinding extends Bindings {
   void dependencies() {
     // provider and repository
     Get.lazyPut<CashOutProvider>(() => CashOutProvider());
-    Get.lazyPut<CashOutRepository>(
-            () => CashOutRepository(Get.find()));
+    Get.lazyPut<CashOutRepository>(() => CashOutRepository(Get.find()));
 
     // controller
-    Get.lazyPut<CashOutController>(
-            () => CashOutController(Get.find()));
+    Get.lazyPut<CashOutController>(() => CashOutController(Get.find()));
   }
 }

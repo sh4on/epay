@@ -18,8 +18,16 @@ class CashOutProvider {
   Future<NetworkResult<dynamic>> fetchAllContacts() async {
     return NetworkResult.success(
       [
-        {'name': 'Andrea Summer', 'phone': '0987 3422 8756', 'avatar_url': null},
-        {'name': 'Karen William', 'phone': '0987 3422 8756', 'avatar_url': null},
+        {
+          'name': 'Andrea Summer',
+          'phone': '0987 3422 8756',
+          'avatar_url': null,
+        },
+        {
+          'name': 'Karen William',
+          'phone': '0987 3422 8756',
+          'avatar_url': null,
+        },
         {'name': 'John Doe', 'phone': '0987 3422 8756', 'avatar_url': null},
         {'name': 'Jane Smith', 'phone': '0987 3422 8756', 'avatar_url': null},
       ],

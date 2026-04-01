@@ -19,6 +19,5 @@ class CashOutRepository {
   Future<NetworkResult<dynamic>> processCashOut({
     required String agentPhone,
     required double amount,
-  }) =>
-      _provider.processCashOut(agentPhone: agentPhone, amount: amount);
+  }) => _provider.processCashOut(agentPhone: agentPhone, amount: amount);
 }

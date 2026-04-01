@@ -8,11 +8,9 @@ class SendMoneyBinding extends Bindings {
   void dependencies() {
     // provider and repository
     Get.lazyPut<SendMoneyProvider>(() => SendMoneyProvider());
-    Get.lazyPut<SendMoneyRepository>(
-            () => SendMoneyRepository(Get.find()));
+    Get.lazyPut<SendMoneyRepository>(() => SendMoneyRepository(Get.find()));
 
     // controller
-    Get.lazyPut<SendMoneyController>(
-            () => SendMoneyController(Get.find()));
+    Get.lazyPut<SendMoneyController>(() => SendMoneyController(Get.find()));
   }
 }

@@ -82,7 +82,7 @@ class OnboardingScreen extends GetView<OnboardingController> {
             // skip text link
             InkWell(
               onTap: controller.onSkipTap,
-              child: Text(AppStrings.skip, style: AppTypography.link),
+              child: const Text(AppStrings.skip, style: AppTypography.link),
             ),
 
             const SizedBox(height: AppSpacing.xxl),

@@ -19,7 +19,6 @@ import '../modules/send_money/screens/confirm_send_money_screen.dart';
 import '../modules/add_money/bindings/add_money_binding.dart';
 import '../modules/add_money/screens/add_money_screen.dart';
 import 'app_pages.dart';
-import 'app_routes.dart';
 
 class AppPages {
   AppPages._();

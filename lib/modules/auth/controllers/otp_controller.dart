@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import '../../../data/models/user_model.dart';
 import '../../../data/repositories/auth_repository.dart';
 import '../../../routes/app_pages.dart';
-import '../../../routes/app_routes.dart';
 
 class OtpController extends GetxController {
   final AuthRepository _repository;
@@ -14,8 +13,10 @@ class OtpController extends GetxController {
   String phone = '';
 
   // 4 individual otp digit controllers
-  final List<TextEditingController> otpControllers =
-  List.generate(4, (_) => TextEditingController());
+  final List<TextEditingController> otpControllers = List.generate(
+    4,
+    (_) => TextEditingController(),
+  );
 
   // 4 focus nodes for auto-jump between boxes
   final List<FocusNode> focusNodes = List.generate(4, (_) => FocusNode());
@@ -79,8 +80,7 @@ class OtpController extends GetxController {
   }
 
   // get full otp string
-  String get _fullOtp =>
-      otpControllers.map((c) => c.text).join();
+  String get _fullOtp => otpControllers.map((c) => c.text).join();
 
   // verify button tap
   Future<void> onVerifyTap() async {
@@ -97,10 +97,7 @@ class OtpController extends GetxController {
 
     isLoading.value = true;
 
-    final result = await _repository.verifyOtp(
-      phone: phone,
-      otp: _fullOtp,
-    );
+    final result = await _repository.verifyOtp(phone: phone, otp: _fullOtp);
 
     isLoading.value = false;
 

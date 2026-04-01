@@ -6,7 +6,6 @@ import '../../../data/models/bank_model.dart';
 import '../../../data/repositories/cash_out_repository.dart';
 import '../../../gen/assets.gen.dart';
 import '../../../routes/app_pages.dart';
-import '../../../routes/app_routes.dart';
 
 enum CashOutTab { agent, atm }
 

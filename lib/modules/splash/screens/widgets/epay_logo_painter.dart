@@ -21,7 +21,7 @@ class EPayLogoPainter extends CustomPainter {
     canvas.drawArc(
       Rect.fromCircle(center: Offset(cx, cy), radius: radius),
       -2.2, // start angle (slightly past top_section)
-      5.0,  // sweep angle (almost full circle)
+      5.0, // sweep angle (almost full circle)
       false,
       arcPaint,
     );
@@ -34,11 +34,7 @@ class EPayLogoPainter extends CustomPainter {
     // position dot at top_section-right of arc opening
     final dotX = cx + radius * 0.62;
     final dotY = cy - radius * 0.70;
-    canvas.drawCircle(
-      Offset(dotX, dotY),
-      strokeW * 0.52,
-      dotPaint,
-    );
+    canvas.drawCircle(Offset(dotX, dotY), strokeW * 0.52, dotPaint);
   }
 
   @override

@@ -77,11 +77,7 @@ class SplashScreen extends StatelessWidget {
             ),
 
             // centered logo
-            Center(
-              child: SvgPicture.asset(
-                Assets.splash.splashLogo,
-              ),
-            ),
+            Center(child: SvgPicture.asset(Assets.splash.splashLogo)),
           ],
         ),
       ),

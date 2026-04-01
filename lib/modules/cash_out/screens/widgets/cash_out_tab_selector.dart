@@ -1,14 +1,10 @@
 import 'package:epay/modules/cash_out/screens/widgets/tab_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_spacing.dart';
 import '../../../../core/constants/app_strings.dart';
-import '../../../../core/constants/app_typography.dart';
 import '../../../../gen/assets.gen.dart';
-import '../../../../shared/common_widgets/contact_book_icon_button.dart';
 import '../../controllers/cash_out_controller.dart';
 
 class CashOutTabSelector extends StatelessWidget {

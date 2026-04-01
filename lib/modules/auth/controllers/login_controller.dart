@@ -1,12 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../core/utils/extensions/string_extensions.dart';
 import '../../../core/utils/mixins/validation_mixin.dart';
 import '../../../data/models/user_model.dart';
 import '../../../data/repositories/auth_repository.dart';
 import '../../../routes/app_pages.dart';
-import '../../../routes/app_routes.dart';
 
 class LoginController extends GetxController with ValidationMixin {
   final AuthRepository _repository;

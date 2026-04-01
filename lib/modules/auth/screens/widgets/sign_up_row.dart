@@ -14,10 +14,10 @@ class SignUpRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('${AppStrings.dontHaveAccount} ', style: AppTypography.bodyMedium),
+        const Text('${AppStrings.dontHaveAccount} ', style: AppTypography.bodyMedium),
         GestureDetector(
           onTap: controller.onSignUpTap,
-          child: Text(AppStrings.signUp, style: AppTypography.link),
+          child: const Text(AppStrings.signUp, style: AppTypography.link),
         ),
       ],
     );

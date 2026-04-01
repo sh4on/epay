@@ -52,7 +52,9 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppSpacing.radiusButton),
           ),
-          textStyle: AppTypography.labelLarge.copyWith(color: AppColors.primary),
+          textStyle: AppTypography.labelLarge.copyWith(
+            color: AppColors.primary,
+          ),
         ),
       ),
 
@@ -80,9 +82,7 @@ class AppTheme {
           borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
           borderSide: const BorderSide(color: AppColors.error, width: 1.5),
         ),
-        hintStyle: AppTypography.bodyMedium.copyWith(
-          color: AppColors.textHint,
-        ),
+        hintStyle: AppTypography.bodyMedium.copyWith(color: AppColors.textHint),
       ),
 
       // divider

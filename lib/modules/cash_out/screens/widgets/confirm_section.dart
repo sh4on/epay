@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 
 import '../../../../core/constants/app_spacing.dart';
 import '../../../../core/constants/app_typography.dart';

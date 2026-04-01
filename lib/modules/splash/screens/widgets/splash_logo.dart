@@ -25,9 +25,10 @@ class _SplashLogoState extends State<SplashLogo>
     );
 
     // fade in
-    _fadeAnim = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _animController, curve: Curves.easeIn),
-    );
+    _fadeAnim = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _animController, curve: Curves.easeIn));
 
     // scale up slightly
     _scaleAnim = Tween<double>(begin: 0.7, end: 1.0).animate(
@@ -47,10 +48,7 @@ class _SplashLogoState extends State<SplashLogo>
   Widget build(BuildContext context) {
     return FadeTransition(
       opacity: _fadeAnim,
-      child: ScaleTransition(
-        scale: _scaleAnim,
-        child: EPayLogoIcon(),
-      ),
+      child: ScaleTransition(scale: _scaleAnim, child: const EPayLogoIcon()),
     );
   }
 }

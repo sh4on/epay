@@ -7,10 +7,7 @@ import '../../core/constants/app_typography.dart';
 class EmptyStateWidget extends StatelessWidget {
   final String message;
 
-  const EmptyStateWidget({
-    super.key,
-    this.message = 'No data found!',
-  });
+  const EmptyStateWidget({super.key, this.message = 'No data found!'});
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +16,7 @@ class EmptyStateWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // empty icon
-          Icon(
-            Icons.inbox_outlined,
-            size: 72,
-            color: AppColors.textHint,
-          ),
+          const Icon(Icons.inbox_outlined, size: 72, color: AppColors.textHint),
           const SizedBox(height: AppSpacing.lg),
 
           // empty message

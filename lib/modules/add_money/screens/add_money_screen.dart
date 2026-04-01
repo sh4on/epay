@@ -1,16 +1,11 @@
 import 'package:epay/modules/add_money/screens/widgets/add_money_body.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import '../../../gen/assets.gen.dart';
 import '../controllers/add_money_controller.dart';
 import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_spacing.dart';
 import '../../../core/constants/app_strings.dart';
-import '../../../core/constants/app_typography.dart';
 import '../../../shared/common_widgets/loading_state_widget.dart';
 import '../../../shared/common_widgets/error_state_widget.dart';
-import '../../../shared/common_widgets/app_button.dart';
 
 class AddMoneyScreen extends GetView<AddMoneyController> {
   const AddMoneyScreen({super.key});

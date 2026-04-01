@@ -1,7 +1,6 @@
 import 'package:epay/modules/cash_out/screens/widgets/confirm_section.dart';
 import 'package:epay/modules/cash_out/screens/widgets/hidden_amount_input.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../controllers/cash_out_controller.dart';
 import '../../../core/constants/app_colors.dart';
@@ -18,9 +17,9 @@ class ConfirmCashOutScreen extends GetView<CashOutController> {
       appBar: AppBar(
         // title with regular + bold split
         title: RichText(
-          text: TextSpan(
+          text: const TextSpan(
             style: AppTypography.headlineSmall,
-            children: const [
+            children: [
               TextSpan(
                 text: 'Confirm to ',
                 style: TextStyle(fontWeight: FontWeight.w400),
@@ -54,13 +53,15 @@ class ConfirmCashOutScreen extends GetView<CashOutController> {
                   // agent section
                   ConfirmSection(
                     label: AppStrings.agent,
-                    child: Obx(() => Text(
-                      controller.selectedPhone.value,
-                      style: AppTypography.bodyMedium.copyWith(
-                        color: AppColors.textSecondary,
+                    child: Obx(
+                      () => Text(
+                        controller.selectedPhone.value,
+                        style: AppTypography.bodyMedium.copyWith(
+                          color: AppColors.textSecondary,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
-                    )),
+                    ),
                   ),
 
                   const Divider(height: 1),
@@ -75,26 +76,28 @@ class ConfirmCashOutScreen extends GetView<CashOutController> {
                         const SizedBox(height: AppSpacing.xl),
 
                         // amount display — large centered
-                        Obx(() => InkWell(
-                          onTap: () {
-                            controller.amountFocusNode.requestFocus();
-                          },
-                          borderRadius: BorderRadius.circular(8),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12,
-                              vertical: 8,
-                            ),
-                            child: Text(
-                              'TK: ${controller.enteredAmount.value.toStringAsFixed(0)}',
-                              style: controller.enteredAmount.value > 0
-                                  ? AppTypography.amountDisplay
-                                  : AppTypography.amountDisplay.copyWith(
-                                color: AppColors.textHint,
+                        Obx(
+                          () => InkWell(
+                            onTap: () {
+                              controller.amountFocusNode.requestFocus();
+                            },
+                            borderRadius: BorderRadius.circular(8),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 8,
+                              ),
+                              child: Text(
+                                'TK: ${controller.enteredAmount.value.toStringAsFixed(0)}',
+                                style: controller.enteredAmount.value > 0
+                                    ? AppTypography.amountDisplay
+                                    : AppTypography.amountDisplay.copyWith(
+                                        color: AppColors.textHint,
+                                      ),
                               ),
                             ),
                           ),
-                        )),
+                        ),
 
                         const SizedBox(height: AppSpacing.lg),
 
@@ -146,12 +149,13 @@ class ConfirmCashOutScreen extends GetView<CashOutController> {
                         : AppColors.buttonDisabled,
                     disabledBackgroundColor: AppColors.buttonDisabled,
                     shape: RoundedRectangleBorder(
-                      borderRadius:
-                      BorderRadius.circular(AppSpacing.radiusButton),
+                      borderRadius: BorderRadius.circular(
+                        AppSpacing.radiusButton,
+                      ),
                     ),
                     elevation: 0,
                   ),
-                  child: Text(
+                  child: const Text(
                     AppStrings.confirm,
                     style: AppTypography.labelLarge,
                   ),

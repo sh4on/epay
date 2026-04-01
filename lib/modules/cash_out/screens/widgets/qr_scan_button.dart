@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_spacing.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_typography.dart';
-import '../../../../shared/common_widgets/contact_book_icon_button.dart';
-import '../../controllers/cash_out_controller.dart';
 
 class QrScanButton extends StatelessWidget {
   final VoidCallback onTap;
 
-  const QrScanButton({required this.onTap});
+  const QrScanButton({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

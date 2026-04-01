@@ -15,16 +15,19 @@ class TopBar extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: AppSpacing.md),
       child: Row(
-        mainAxisAlignment: showBackButton ? MainAxisAlignment.spaceBetween : MainAxisAlignment.end,
+        mainAxisAlignment: showBackButton
+            ? MainAxisAlignment.spaceBetween
+            : MainAxisAlignment.end,
         children: [
-          if (showBackButton) GestureDetector(
-            onTap: () => Get.back(),
-            child: const Icon(
-              Icons.arrow_back_outlined,
-              size: AppSpacing.iconMd,
-              color: AppColors.textPrimary,
+          if (showBackButton)
+            GestureDetector(
+              onTap: () => Get.back(),
+              child: const Icon(
+                Icons.arrow_back_outlined,
+                size: AppSpacing.iconMd,
+                color: AppColors.textPrimary,
+              ),
             ),
-          ),
           LanguageToggleButton(onTap: () {}),
         ],
       ),

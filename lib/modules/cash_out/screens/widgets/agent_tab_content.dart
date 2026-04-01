@@ -1,14 +1,9 @@
-
 import 'package:epay/modules/cash_out/screens/widgets/qr_scan_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_spacing.dart';
 import '../../../../core/constants/app_strings.dart';
-import '../../../../core/constants/app_typography.dart';
-import '../../../../shared/common_widgets/contact_book_icon_button.dart';
 import '../../../../shared/common_widgets/error_state_widget.dart';
 import '../../../../shared/common_widgets/loading_state_widget.dart';
 import '../../../../shared/common_widgets/section_header.dart';
@@ -50,7 +45,7 @@ class AgentTabContent extends StatelessWidget {
             const SizedBox(height: AppSpacing.xl),
 
             // recent contacts section
-            SectionHeader(title: AppStrings.recentContacts),
+            const SectionHeader(title: AppStrings.recentContacts),
 
             ContactsList(
               contacts: controller.recentContacts,
@@ -58,7 +53,7 @@ class AgentTabContent extends StatelessWidget {
             ),
 
             // all contacts section
-            SectionHeader(title: AppStrings.allContacts),
+            const SectionHeader(title: AppStrings.allContacts),
 
             ContactsList(
               contacts: controller.allContacts,

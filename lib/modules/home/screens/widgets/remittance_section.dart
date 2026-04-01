@@ -16,14 +16,12 @@ class RemittanceSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.screenPadding,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.screenPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // section title
-          Text(AppStrings.remittance, style: AppTypography.headlineSmall),
+          const Text(AppStrings.remittance, style: AppTypography.headlineSmall),
 
           const SizedBox(height: AppSpacing.lg),
 
@@ -33,8 +31,7 @@ class RemittanceSection extends StatelessWidget {
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemCount: controller.remittanceItems.length,
-              separatorBuilder: (_, __) =>
-              const SizedBox(width: AppSpacing.md),
+              separatorBuilder: (_, __) => const SizedBox(width: AppSpacing.md),
               itemBuilder: (_, index) {
                 final item = controller.remittanceItems[index];
                 return _RemittanceCard(item: item);

@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_spacing.dart';
-import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_typography.dart';
-import '../../../../shared/common_widgets/contact_book_icon_button.dart';
-import '../../controllers/cash_out_controller.dart';
 
 class TabButton extends StatelessWidget {
   final String iconPath;
@@ -15,7 +11,7 @@ class TabButton extends StatelessWidget {
   final bool isActive;
   final VoidCallback onTap;
 
-  const TabButton({
+  const TabButton({super.key, 
     required this.iconPath,
     required this.label,
     required this.isActive,

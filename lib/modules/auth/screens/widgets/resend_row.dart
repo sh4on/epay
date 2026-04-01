@@ -16,26 +16,23 @@ class ResendRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          '${AppStrings.didntGetCode} ',
-          style: AppTypography.bodyMedium,
-        ),
-        Obx(() => GestureDetector(
-          onTap: controller.canResend.value
-              ? controller.onResendTap
-              : null,
-          child: Text(
-            controller.canResend.value
-                ? AppStrings.resend
-            // show countdown when not yet resendable
-                : '${AppStrings.resend} (${controller.resendCountdown.value}s)',
-            style: AppTypography.link.copyWith(
-              color: controller.canResend.value
-                  ? AppColors.primary
-                  : AppColors.textSecondary,
+        const Text('${AppStrings.didntGetCode} ', style: AppTypography.bodyMedium),
+        Obx(
+          () => GestureDetector(
+            onTap: controller.canResend.value ? controller.onResendTap : null,
+            child: Text(
+              controller.canResend.value
+                  ? AppStrings.resend
+                  // show countdown when not yet resendable
+                  : '${AppStrings.resend} (${controller.resendCountdown.value}s)',
+              style: AppTypography.link.copyWith(
+                color: controller.canResend.value
+                    ? AppColors.primary
+                    : AppColors.textSecondary,
+              ),
             ),
           ),
-        )),
+        ),
       ],
     );
   }

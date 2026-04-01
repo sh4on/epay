@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_typography.dart';
 import '../../controllers/cash_out_controller.dart';
+
 class HiddenAmountInput extends StatelessWidget {
   final CashOutController controller;
 
@@ -26,19 +26,14 @@ class HiddenAmountInput extends StatelessWidget {
                 controller: controller.amountTextController,
                 focusNode: controller.amountFocusNode,
                 keyboardType: TextInputType.number,
-                inputFormatters: [
-                  FilteringTextInputFormatter.digitsOnly,
-                ],
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
 
                 onChanged: (value) {
                   controller.onAmountChanged(value);
                 },
 
                 decoration: const InputDecoration(border: InputBorder.none),
-                style: const TextStyle(
-                  fontSize: 1,
-                  color: Colors.transparent,
-                ),
+                style: const TextStyle(fontSize: 1, color: Colors.transparent),
               ),
             ),
 

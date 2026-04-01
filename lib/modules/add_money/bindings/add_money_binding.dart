@@ -8,11 +8,9 @@ class AddMoneyBinding extends Bindings {
   void dependencies() {
     // provider and repository
     Get.lazyPut<AddMoneyProvider>(() => AddMoneyProvider());
-    Get.lazyPut<AddMoneyRepository>(
-            () => AddMoneyRepository(Get.find()));
+    Get.lazyPut<AddMoneyRepository>(() => AddMoneyRepository(Get.find()));
 
     // controller
-    Get.lazyPut<AddMoneyController>(
-            () => AddMoneyController(Get.find()));
+    Get.lazyPut<AddMoneyController>(() => AddMoneyController(Get.find()));
   }
 }

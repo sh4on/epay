@@ -27,7 +27,7 @@ class SendMoneyBody extends StatelessWidget {
           const Divider(height: AppSpacing.xxl),
 
           // recent contacts section
-          SectionHeader(title: AppStrings.recentContacts),
+          const SectionHeader(title: AppStrings.recentContacts),
 
           ContactsList(
             contacts: controller.recentContacts,
@@ -37,7 +37,7 @@ class SendMoneyBody extends StatelessWidget {
           const SizedBox(height: AppSpacing.md),
 
           // all contacts section
-          SectionHeader(title: AppStrings.allContacts),
+          const SectionHeader(title: AppStrings.allContacts),
 
           ContactsList(
             contacts: controller.allContacts,

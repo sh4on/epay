@@ -11,10 +11,10 @@ class ContactUsRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('${AppStrings.didYouFaceIssue} ', style: AppTypography.bodyMedium),
+        const Text('${AppStrings.didYouFaceIssue} ', style: AppTypography.bodyMedium),
         GestureDetector(
           onTap: () {},
-          child: Text(AppStrings.contactUs, style: AppTypography.link),
+          child: const Text(AppStrings.contactUs, style: AppTypography.link),
         ),
       ],
     );

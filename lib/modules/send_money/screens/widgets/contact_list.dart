@@ -18,8 +18,8 @@ class ContactsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (contacts.isEmpty) {
-      return Padding(
-        padding: const EdgeInsets.symmetric(vertical: AppSpacing.lg),
+      return const Padding(
+        padding: EdgeInsets.symmetric(vertical: AppSpacing.lg),
         child: Text('No contacts found.', style: AppTypography.bodySmall),
       );
     }

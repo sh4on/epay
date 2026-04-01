@@ -34,9 +34,9 @@ class LoginScreen extends GetView<LoginController> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TopBar(),
+                        const TopBar(),
                         const SizedBox(height: AppSpacing.xxl),
-                        Text(
+                        const Text(
                           AppStrings.loginTitle,
                           style: AppTypography.headlineLarge,
                         ),

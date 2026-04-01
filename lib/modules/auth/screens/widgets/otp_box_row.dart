@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_spacing.dart';
 import '../../controllers/otp_controller.dart';
-import '../otp_screen.dart';
 import 'otp_box.dart';
 
 class OtpBoxRow extends StatelessWidget {

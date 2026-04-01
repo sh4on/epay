@@ -58,7 +58,7 @@ class NetworkService {
       log(
         const JsonEncoder.withIndent('  ').convert(response.data),
         name:
-        '\n🚨\n[STATUS CODE] ${response.statusCode}\n[GET][ENDPOINT] $endpoint\n[RESPONSE]\n',
+            '\n🚨\n[STATUS CODE] ${response.statusCode}\n[GET][ENDPOINT] $endpoint\n[RESPONSE]\n',
       );
 
       if (response.statusCode != null &&
@@ -91,16 +91,16 @@ class NetworkService {
 
   // post request
   Future<NetworkResult<dynamic>> post(
-      String endpoint,
-      Map<String, dynamic> body,
-      ) async {
+    String endpoint,
+    Map<String, dynamic> body,
+  ) async {
     try {
       final Response response = await _dio.post(endpoint, data: body);
 
       log(
         const JsonEncoder.withIndent('  ').convert(response.data),
         name:
-        '\n🚨\n[STATUS CODE] ${response.statusCode}\n[POST][ENDPOINT] $endpoint\n[RESPONSE]\n',
+            '\n🚨\n[STATUS CODE] ${response.statusCode}\n[POST][ENDPOINT] $endpoint\n[RESPONSE]\n',
       );
 
       if (response.statusCode != null &&

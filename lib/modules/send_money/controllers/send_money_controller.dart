@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../../../data/models/contact_model.dart';
 import '../../../data/repositories/send_money_repository.dart';
-import '../../../gen/assets.gen.dart';
 import '../../../routes/app_pages.dart';
-import '../../../routes/app_routes.dart';
 import '../screens/widgets/send_money_success_dialog.dart';
 
 class SendMoneyController extends GetxController {

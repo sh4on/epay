@@ -30,7 +30,7 @@ class HomeAppBar extends StatelessWidget {
           stops: [0.0, 0.25, 0.5, 0.75, 1.0],
         ),
       ),
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         top: 60,
         left: AppSpacing.screenPadding,
         right: AppSpacing.screenPadding,

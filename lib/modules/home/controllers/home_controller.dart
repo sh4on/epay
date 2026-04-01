@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../data/repositories/home_repository.dart';
 import '../../../routes/app_pages.dart';
-import '../../../routes/app_routes.dart';
 
 // service item model for grid display
 class ServiceItem {
@@ -32,11 +31,7 @@ class BillItem {
   final String label;
   final String icon;
 
-  const BillItem({
-    required this.id,
-    required this.label,
-    required this.icon,
-  });
+  const BillItem({required this.id, required this.label, required this.icon});
 
   factory BillItem.fromJson(Map<String, dynamic> json) => BillItem(
     id: json['id'] ?? '',
@@ -139,7 +134,7 @@ class HomeController extends GetxController {
         Get.toNamed(AppRoutes.addMoney);
         break;
       default:
-      // placeholder for other services
+        // placeholder for other services
         Get.snackbar(
           item.label,
           '${item.label} coming soon.',

@@ -40,7 +40,7 @@ class _SignupWelcomeScreenState extends State<SignupWelcomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // top bar
-                TopBar(showBackButton: false),
+                const TopBar(showBackButton: false),
 
                 Expanded(
                   child: Column(
@@ -107,7 +107,7 @@ class _SignupWelcomeScreenState extends State<SignupWelcomeScreen> {
                 const SizedBox(height: AppSpacing.xxxl),
 
                 // contact us row
-                ContactUsRow(),
+                const ContactUsRow(),
 
                 const SizedBox(height: AppSpacing.xl),
               ],

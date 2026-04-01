@@ -7,10 +7,7 @@ import '../../core/constants/app_typography.dart';
 class LoadingStateWidget extends StatelessWidget {
   final String loadingMessage;
 
-  const LoadingStateWidget({
-    super.key,
-    this.loadingMessage = 'Please wait...',
-  });
+  const LoadingStateWidget({super.key, this.loadingMessage = 'Please wait...'});
 
   @override
   Widget build(BuildContext context) {

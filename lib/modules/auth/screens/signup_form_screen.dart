@@ -40,7 +40,7 @@ class SignupFormScreen extends GetView<SignupController> {
                       const SizedBox(height: AppSpacing.xxl),
 
                       // screen title
-                      Text(
+                      const Text(
                         AppStrings.createAccount,
                         style: AppTypography.headlineLarge,
                       ),

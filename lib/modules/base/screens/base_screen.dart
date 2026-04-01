@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/base_controller.dart';
 import '../../home/screens/home_screen.dart';
+
 class BaseScreen extends GetView<BaseController> {
   const BaseScreen({super.key});
 
@@ -23,7 +24,9 @@ class BaseScreen extends GetView<BaseController> {
             return const HomeScreen();
         }
       }),
-      bottomNavigationBar: SafeArea(child: AppBottomNavBar(controller: controller)),
+      bottomNavigationBar: SafeArea(
+        child: AppBottomNavBar(controller: controller),
+      ),
     );
   }
 }

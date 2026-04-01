@@ -1,4 +1,3 @@
-
 import 'package:epay/modules/home/screens/widgets/see_more_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,14 +17,12 @@ class PayBillSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.screenPadding,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.screenPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // section title
-          Text(AppStrings.payBill, style: AppTypography.headlineSmall),
+          const Text(AppStrings.payBill, style: AppTypography.headlineSmall),
 
           // bill items — 2 rows of 4
           GridView.count(
@@ -36,20 +33,19 @@ class PayBillSection extends StatelessWidget {
             childAspectRatio: 0.85,
             children: controller.billServices
                 .take(8)
-                .map((item) => _BillGridItem(
-              item: item,
-              onTap: () => controller.onBillTap(item),
-            ))
+                .map(
+                  (item) => _BillGridItem(
+                    item: item,
+                    onTap: () => controller.onBillTap(item),
+                  ),
+                )
                 .toList(),
           ),
 
           const SizedBox(height: AppSpacing.md),
 
           // see more button
-          SeeMoreButton(
-            label: AppStrings.seeMore,
-            onTap: () {},
-          ),
+          SeeMoreButton(label: AppStrings.seeMore, onTap: () {}),
         ],
       ),
     );
@@ -78,8 +74,7 @@ class _BillGridItem extends StatelessWidget {
               color: AppColors.white,
               borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
             ),
-            child:_billIcon(item.icon),
-
+            child: _billIcon(item.icon),
           ),
 
           const SizedBox(height: AppSpacing.xs + 2),

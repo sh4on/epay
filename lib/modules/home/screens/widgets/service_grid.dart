@@ -35,10 +35,12 @@ class ServicesGrid extends StatelessWidget {
             ),
             childAspectRatio: 0.85,
             children: displayItems
-                .map((item) => _ServiceGridItem(
-              item: item,
-              onTap: () => controller.onServiceTap(item),
-            ))
+                .map(
+                  (item) => _ServiceGridItem(
+                    item: item,
+                    onTap: () => controller.onServiceTap(item),
+                  ),
+                )
                 .toList(),
           ),
 

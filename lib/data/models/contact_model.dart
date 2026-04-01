@@ -3,11 +3,7 @@ class ContactModel {
   final String phone;
   final String? avatarUrl;
 
-  const ContactModel({
-    required this.name,
-    required this.phone,
-    this.avatarUrl,
-  });
+  const ContactModel({required this.name, required this.phone, this.avatarUrl});
 
   factory ContactModel.fromJson(Map<String, dynamic> json) {
     return ContactModel(

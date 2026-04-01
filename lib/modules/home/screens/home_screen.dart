@@ -26,7 +26,9 @@ class HomeScreen extends StatelessWidget {
         body: Obx(() {
           // loading state
           if (homeController.status.value.isLoading) {
-            return const LoadingStateWidget(loadingMessage: 'Loading your dashboard...');
+            return const LoadingStateWidget(
+              loadingMessage: 'Loading your dashboard...',
+            );
           }
 
           // error state

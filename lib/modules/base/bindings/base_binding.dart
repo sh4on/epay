@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import '../controllers/base_controller.dart';
-import '../../home/bindings/home_binding.dart';
 import '../../home/controllers/home_controller.dart';
 import '../../../data/providers/home_provider.dart';
 import '../../../data/repositories/home_repository.dart';

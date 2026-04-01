@@ -14,26 +14,28 @@ class AppBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => CurvedNavigationBar(
-      currentIndex: controller.activeIndex.value,
-      items: const [
-        CurvedNavigationBarItem(
-          iconData: Icons.home_outlined,
-          selectedIconData: Icons.home,
-        ),
-        CurvedNavigationBarItem(
-          iconData: Icons.qr_code_scanner,
-          selectedIconData: Icons.qr_code_scanner,
-        ),
-        CurvedNavigationBarItem(
-          iconData: Icons.mail_outline,
-          selectedIconData: Icons.mail,
-        ),
-      ],
-      onTap: (index) => controller.onTabChanged(index),
-      selectedColor: AppColors.primary,
-      unselectedColor: AppColors.textSecondary,
-    ));
+    return Obx(
+      () => CurvedNavigationBar(
+        currentIndex: controller.activeIndex.value,
+        items: const [
+          CurvedNavigationBarItem(
+            iconData: Icons.home_outlined,
+            selectedIconData: Icons.home,
+          ),
+          CurvedNavigationBarItem(
+            iconData: Icons.qr_code_scanner,
+            selectedIconData: Icons.qr_code_scanner,
+          ),
+          CurvedNavigationBarItem(
+            iconData: Icons.mail_outline,
+            selectedIconData: Icons.mail,
+          ),
+        ],
+        onTap: (index) => controller.onTabChanged(index),
+        selectedColor: AppColors.primary,
+        unselectedColor: AppColors.textSecondary,
+      ),
+    );
   }
 }
 
@@ -55,10 +57,7 @@ class CurvedNavigationBar extends StatelessWidget {
     this.unselectedColor = Colors.grey,
     this.selectedColor = Colors.blue,
     this.currentIndex = 0,
-  })  : assert(
-  items.length == 3,
-  'This widget requires exactly 3 items',
-  );
+  }) : assert(items.length == 3, 'This widget requires exactly 3 items');
 
   final List<CurvedNavigationBarItem> items;
   final ValueChanged<int>? onTap;
@@ -102,7 +101,7 @@ class CurvedNavigationBar extends StatelessWidget {
                 final item = items[index];
                 final isActive = index == currentIndex;
 
-                // QR scan button 
+                // QR scan button
                 if (index == 1) {
                   return _QrScanNavItem(
                     isActive: isActive,
@@ -143,15 +142,10 @@ class _CurvedClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
-    final curveHeight = 30.0;
+    const curveHeight = 30.0;
 
     path.moveTo(0, 0);
-    path.quadraticBezierTo(
-        size.width * 0.5,
-        curveHeight,
-        size.width,
-        0
-    );
+    path.quadraticBezierTo(size.width * 0.5, curveHeight, size.width, 0);
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
     path.close();
@@ -184,13 +178,13 @@ class _QrScanNavItem extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: isActive
                     ? LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    AppColors.primary,
-                    AppColors.primary.withValues(alpha: 0.8),
-                  ],
-                )
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          AppColors.primary,
+                          AppColors.primary.withValues(alpha: 0.8),
+                        ],
+                      )
                     : null,
                 color: isActive ? null : AppColors.white,
                 shape: BoxShape.circle,
@@ -282,11 +276,16 @@ class QrScanPlaceholder extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.qr_code_scanner,
-                size: 72, color: AppColors.textSecondary),
+            Icon(
+              Icons.qr_code_scanner,
+              size: 72,
+              color: AppColors.textSecondary,
+            ),
             SizedBox(height: AppSpacing.lg),
-            Text('QR Scanner coming soon.',
-                style: TextStyle(color: AppColors.textSecondary)),
+            Text(
+              'QR Scanner coming soon.',
+              style: TextStyle(color: AppColors.textSecondary),
+            ),
           ],
         ),
       ),
@@ -306,8 +305,10 @@ class InboxPlaceholder extends StatelessWidget {
           children: [
             Icon(Icons.mail_outline, size: 72, color: AppColors.textSecondary),
             SizedBox(height: AppSpacing.lg),
-            Text('Inbox coming soon.',
-                style: TextStyle(color: AppColors.textSecondary)),
+            Text(
+              'Inbox coming soon.',
+              style: TextStyle(color: AppColors.textSecondary),
+            ),
           ],
         ),
       ),

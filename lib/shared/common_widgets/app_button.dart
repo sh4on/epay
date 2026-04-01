@@ -31,8 +31,8 @@ class AppButton extends StatelessWidget {
     this.width,
     this.height = AppSpacing.buttonHeight,
     this.prefixIcon,
-  })  : variant = AppButtonVariant.disabled,
-        onPressed = null;
+  }) : variant = AppButtonVariant.disabled,
+       onPressed = null;
 
   // convenience constructor — outlined style
   const AppButton.outlined({
@@ -55,7 +55,7 @@ class AppButton extends StatelessWidget {
 
   Widget _buildButton() {
     switch (variant) {
-    // outlined button
+      // outlined button
       case AppButtonVariant.outlined:
         return OutlinedButton(
           onPressed: onPressed,
@@ -68,7 +68,7 @@ class AppButton extends StatelessWidget {
           child: _buildChild(color: AppColors.primary),
         );
 
-    // disabled button
+      // disabled button
       case AppButtonVariant.disabled:
         return ElevatedButton(
           onPressed: null,
@@ -83,7 +83,7 @@ class AppButton extends StatelessWidget {
           child: _buildChild(color: AppColors.white),
         );
 
-    // primary button (default)
+      // primary button (default)
       case AppButtonVariant.primary:
         return ElevatedButton(
           onPressed: onPressed,
@@ -108,10 +108,7 @@ class AppButton extends StatelessWidget {
           prefixIcon!,
           const SizedBox(width: AppSpacing.sm),
         ],
-        Text(
-          label,
-          style: AppTypography.labelLarge.copyWith(color: color),
-        ),
+        Text(label, style: AppTypography.labelLarge.copyWith(color: color)),
       ],
     );
   }

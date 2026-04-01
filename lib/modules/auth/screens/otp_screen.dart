@@ -26,15 +26,12 @@ class OtpScreen extends GetView<OtpController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // top bar — back + language
-              TopBar(),
+              const TopBar(),
 
               const SizedBox(height: AppSpacing.xxl),
 
               // screen title
-              Text(
-                AppStrings.confirmPhone,
-                style: AppTypography.headlineLarge,
-              ),
+              const Text(AppStrings.confirmPhone, style: AppTypography.headlineLarge),
 
               const SizedBox(height: AppSpacing.sm),
 
@@ -59,19 +56,23 @@ class OtpScreen extends GetView<OtpController> {
               const Spacer(),
 
               // verify button
-              Obx(() => controller.isLoading.value
-                  ? const Center(
-                child: CircularProgressIndicator(color: AppColors.primary),
-              )
-                  : AppButton(
-                label: AppStrings.verifyPhone,
-                onPressed: controller.onVerifyTap,
-              )),
+              Obx(
+                () => controller.isLoading.value
+                    ? const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.primary,
+                        ),
+                      )
+                    : AppButton(
+                        label: AppStrings.verifyPhone,
+                        onPressed: controller.onVerifyTap,
+                      ),
+              ),
 
               const SizedBox(height: AppSpacing.xxxl),
 
               // contact us row
-              ContactUsRow(),
+              const ContactUsRow(),
 
               const SizedBox(height: AppSpacing.xl),
             ],

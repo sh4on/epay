@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_spacing.dart';
-import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_typography.dart';
 import '../../../../data/models/bank_model.dart';
-import '../../../../shared/common_widgets/contact_book_icon_button.dart';
-import '../../controllers/cash_out_controller.dart';
 
 class BankCard extends StatelessWidget {
   final BankModel bank;
   final VoidCallback onTap;
 
-  const BankCard({required this.bank, required this.onTap});
+  const BankCard({super.key, required this.bank, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

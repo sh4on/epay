@@ -1,13 +1,11 @@
 import 'package:epay/shared/common_widgets/contact_us_row.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_spacing.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_typography.dart';
-import '../../../../shared/common_widgets/contact_book_icon_button.dart';
 import '../../../../shared/common_widgets/error_state_widget.dart';
 import '../../../../shared/common_widgets/loading_state_widget.dart';
 import '../../controllers/cash_out_controller.dart';
@@ -16,7 +14,7 @@ import 'bank_card.dart';
 class AtmTabContent extends StatelessWidget {
   final CashOutController controller;
 
-  const AtmTabContent({required this.controller});
+  const AtmTabContent({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +48,7 @@ class AtmTabContent extends StatelessWidget {
                   ),
                   TextSpan(
                     text:
-                    '${controller.availableBalance.toStringAsFixed(0)} TK',
+                        '${controller.availableBalance.toStringAsFixed(0)} TK',
                     style: AppTypography.bodyLarge,
                   ),
                 ],
@@ -101,33 +99,33 @@ class AtmTabContent extends StatelessWidget {
           // bank list
           Expanded(
             child: Obx(
-                  () => controller.filteredBanks.isEmpty
+              () => controller.filteredBanks.isEmpty
                   ? const Center(
-                child: Text(
-                  'No banks found.',
-                  style: TextStyle(color: AppColors.textSecondary),
-                ),
-              )
+                      child: Text(
+                        'No banks found.',
+                        style: TextStyle(color: AppColors.textSecondary),
+                      ),
+                    )
                   : ListView.separated(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppSpacing.screenPadding,
-                ),
-                itemCount: controller.filteredBanks.length,
-                separatorBuilder: (_, __) =>
-                const SizedBox(height: AppSpacing.md),
-                itemBuilder: (_, index) {
-                  final bank = controller.filteredBanks[index];
-                  return BankCard(
-                    bank: bank,
-                    onTap: () => controller.onBankTapped(bank),
-                  );
-                },
-              ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.screenPadding,
+                      ),
+                      itemCount: controller.filteredBanks.length,
+                      separatorBuilder: (_, __) =>
+                          const SizedBox(height: AppSpacing.md),
+                      itemBuilder: (_, index) {
+                        final bank = controller.filteredBanks[index];
+                        return BankCard(
+                          bank: bank,
+                          onTap: () => controller.onBankTapped(bank),
+                        );
+                      },
+                    ),
             ),
           ),
 
           // contact us footer
-          ContactUsRow(),
+          const ContactUsRow(),
           const SizedBox(height: kToolbarHeight),
         ],
       );

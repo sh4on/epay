@@ -45,7 +45,7 @@ class ConfirmButton extends StatelessWidget {
               ),
               elevation: 0,
             ),
-            child: Text(AppStrings.confirm, style: AppTypography.labelLarge),
+            child: const Text(AppStrings.confirm, style: AppTypography.labelLarge),
           ),
         );
       }),

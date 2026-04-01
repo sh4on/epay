@@ -130,14 +130,11 @@ class _DrawerHeader extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               // drawer title
-              Text(
-                AppStrings.epayMenu,
-                style: AppTypography.headlineMedium,
-              ),
+              Text(AppStrings.epayMenu, style: AppTypography.headlineMedium),
             ],
           ),
 
@@ -189,10 +186,9 @@ class _DrawerItem extends StatelessWidget {
             // menu label
             Text(
               label,
-              style: labelStyle ??
-                  AppTypography.bodyLarge.copyWith(
-                    color: AppColors.primary,
-                  ),
+              style:
+                  labelStyle ??
+                  AppTypography.bodyLarge.copyWith(color: AppColors.primary),
             ),
           ],
         ),

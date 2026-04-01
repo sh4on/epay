@@ -2,7 +2,6 @@ import 'package:epay/modules/send_money/screens/widgets/amount_input_field.dart'
 import 'package:epay/modules/send_money/screens/widgets/confirm_button.dart';
 import 'package:epay/modules/send_money/screens/widgets/confirm_detail_section.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../controllers/send_money_controller.dart';
 import '../../../core/constants/app_colors.dart';
@@ -19,9 +18,9 @@ class ConfirmSendMoneyScreen extends GetView<SendMoneyController> {
       appBar: AppBar(
         // split title — regular + bold
         title: RichText(
-          text: TextSpan(
+          text: const TextSpan(
             style: AppTypography.headlineSmall,
-            children: const [
+            children: [
               TextSpan(
                 text: 'Confirm to ',
                 style: TextStyle(fontWeight: FontWeight.w400),

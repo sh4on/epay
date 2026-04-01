@@ -10,9 +10,7 @@ class EPayLogoIcon extends StatelessWidget {
     return SizedBox(
       width: 80,
       height: 80,
-      child: CustomPaint(
-        painter: EPayLogoPainter(),
-      ),
+      child: CustomPaint(painter: EPayLogoPainter()),
     );
   }
 }

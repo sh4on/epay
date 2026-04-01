@@ -9,11 +9,7 @@ class ContactListItem extends StatelessWidget {
   final ContactModel contact;
   final VoidCallback? onTap;
 
-  const ContactListItem({
-    super.key,
-    required this.contact,
-    this.onTap,
-  });
+  const ContactListItem({super.key, required this.contact, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +41,7 @@ class ContactListItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // contact name
-                  Text(
-                    contact.name,
-                    style: AppTypography.titleMedium,
-                  ),
+                  Text(contact.name, style: AppTypography.titleMedium),
                   const SizedBox(height: AppSpacing.xs),
                   // contact number with bank prefix
                   Text(

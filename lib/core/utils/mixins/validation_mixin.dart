@@ -11,7 +11,7 @@ mixin ValidationMixin {
   }
 
   // validate pin
-   String? validatePin(String? value) {
+  String? validatePin(String? value) {
     if (value == null || value.isEmpty) return 'PIN is required';
     if (value.length != 6) return 'PIN must be 6 digits';
     return null;
@@ -23,7 +23,6 @@ mixin ValidationMixin {
     if (value != original) return 'PINs do not match';
     return null;
   }
-
 
   // validate 6 digit pin
   String? validateSixDigitPin(String? value) {

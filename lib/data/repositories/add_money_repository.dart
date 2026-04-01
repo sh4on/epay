@@ -18,9 +18,5 @@ class AddMoneyRepository {
     required double amount,
     required String type,
   }) =>
-      _provider.processAddMoney(
-        sourceId: sourceId,
-        amount: amount,
-        type: type,
-      );
+      _provider.processAddMoney(sourceId: sourceId, amount: amount, type: type);
 }

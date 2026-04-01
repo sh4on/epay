@@ -10,7 +10,7 @@ class OtpBox extends StatelessWidget {
   final FocusNode focusNode;
   final ValueChanged<String> onChanged;
 
-  const OtpBox({
+  const OtpBox({super.key, 
     required this.textController,
     required this.focusNode,
     required this.onChanged,

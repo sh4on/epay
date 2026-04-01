@@ -16,9 +16,8 @@ class SendMoneyRepository {
   Future<NetworkResult<dynamic>> processSendMoney({
     required String recipientPhone,
     required double amount,
-  }) =>
-      _provider.processSendMoney(
-        recipientPhone: recipientPhone,
-        amount: amount,
-      );
+  }) => _provider.processSendMoney(
+    recipientPhone: recipientPhone,
+    amount: amount,
+  );
 }
