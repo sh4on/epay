@@ -77,7 +77,11 @@ lib/
 ├── data/
 │   ├── models/
 │   │   ├── bank_model.dart          # partner bank for ATM cash out
+│   │   ├── bill_item.dart           # single pay bill item (electricity, gas, etc.)
 │   │   ├── contact_model.dart       # contact for send money / cash out
+│   │   ├── money_source_item.dart   # add money source option (bank account, internet banking)
+│   │   ├── remittance_item.dart     # remittance partner (Payoneer, PayPal, etc.)
+│   │   ├── service_item.dart        # home services grid item (cash in, cash out, etc.)
 │   │   ├── transaction_model.dart   # transaction history record
 │   │   └── user_model.dart          # logged-in user data
 │   ├── providers/
@@ -559,13 +563,13 @@ AppButton.disabled(label: 'Confirm')                    // grey, no tap
 ### AppTextField
 ```dart
 AppTextField(
-  label: 'Phone Number',
-  hint: '01701*****4',
-  controller: controller.phoneController,
-  isRequired: true,       // shows red asterisk next to label
-  isPassword: true,       // shows show/hide eye icon toggle
-  keyboardType: TextInputType.phone,
-  validator: controller.validatePhone,
+label: 'Phone Number',
+hint: '01701*****4',
+controller: controller.phoneController,
+isRequired: true,       // shows red asterisk next to label
+isPassword: true,       // shows show/hide eye icon toggle
+keyboardType: TextInputType.phone,
+validator: controller.validatePhone,
 )
 ```
 
@@ -592,13 +596,13 @@ DoubleTapToExit(child: HomeScreen())
 ```dart
 // reusable success dialog used for both cash out and send money
 SuccessDialog.show(
-  context: context,
-  title: 'Cash Out Successful',
-  message: 'You have successfully\nWithdraw ',
-  highlightedAmount: 'TK 5000',
-  buttonLabel: 'Back To Home',
-  onButtonPressed: () => Get.until(...),
-  illustration: CashOutSuccessIllustration(),
+context: context,
+title: 'Cash Out Successful',
+message: 'You have successfully\nWithdraw ',
+highlightedAmount: 'TK 5000',
+buttonLabel: 'Back To Home',
+onButtonPressed: () => Get.until(...),
+illustration: CashOutSuccessIllustration(),
 )
 ```
 
@@ -688,14 +692,14 @@ static const String _base = 'https://your-real-api.com/api/v1';
 ```dart
 // before (mock)
 Future<NetworkResult<dynamic>> login({...}) async {
-  return NetworkResult.success({'name': 'RAHUL', ...}, 200, 'Success');
+return NetworkResult.success({'name': 'RAHUL', ...}, 200, 'Success');
 }
 
 // after (real)
 Future<NetworkResult<dynamic>> login({...}) async {
-  return NetworkService.instance.post('$_base/auth/login', {
-    'phone': phone, 'pin': pin,
-  });
+return NetworkService.instance.post('$_base/auth/login', {
+'phone': phone, 'pin': pin,
+});
 }
 ```
 
