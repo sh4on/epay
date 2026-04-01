@@ -1,63 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../data/models/bill_item.dart';
+import '../../../data/models/remittance_item.dart';
+import '../../../data/models/service_item.dart';
 import '../../../data/repositories/home_repository.dart';
 import '../../../routes/app_pages.dart';
-
-// service item model for grid display
-class ServiceItem {
-  final String id;
-  final String label;
-  final String icon;
-  final String route;
-
-  const ServiceItem({
-    required this.id,
-    required this.label,
-    required this.icon,
-    required this.route,
-  });
-
-  factory ServiceItem.fromJson(Map<String, dynamic> json) => ServiceItem(
-    id: json['id'] ?? '',
-    label: json['label'] ?? '',
-    icon: json['icon'] ?? '',
-    route: json['route'] ?? '',
-  );
-}
-
-// bill item model
-class BillItem {
-  final String id;
-  final String label;
-  final String icon;
-
-  const BillItem({required this.id, required this.label, required this.icon});
-
-  factory BillItem.fromJson(Map<String, dynamic> json) => BillItem(
-    id: json['id'] ?? '',
-    label: json['label'] ?? '',
-    icon: json['icon'] ?? '',
-  );
-}
-
-// remittance partner model
-class RemittanceItem {
-  final String id;
-  final String label;
-  final String logo;
-
-  const RemittanceItem({
-    required this.id,
-    required this.label,
-    required this.logo,
-  });
-
-  factory RemittanceItem.fromJson(Map<String, dynamic> json) => RemittanceItem(
-    id: json['id'] ?? '',
-    label: json['label'] ?? '',
-    logo: json['logo'] ?? '',
-  );
-}
 
 class HomeController extends GetxController {
   final HomeRepository _repository;
@@ -134,7 +81,6 @@ class HomeController extends GetxController {
         Get.toNamed(AppRoutes.addMoney);
         break;
       default:
-        // placeholder for other services
         Get.snackbar(
           item.label,
           '${item.label} coming soon.',

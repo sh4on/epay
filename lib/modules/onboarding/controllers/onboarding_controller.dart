@@ -32,7 +32,7 @@ class OnboardingController extends GetxController {
         curve: Curves.easeInOut,
       );
     } else {
-      // last page — go to signup welcome
+      // last page > go to signup welcome
       _navigateToAuth();
     }
   }

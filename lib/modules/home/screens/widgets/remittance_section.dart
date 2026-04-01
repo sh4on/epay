@@ -5,6 +5,7 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_spacing.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/app_typography.dart';
+import '../../../../data/models/remittance_item.dart';
 import '../../../../gen/assets.gen.dart';
 import '../../controllers/home_controller.dart';
 

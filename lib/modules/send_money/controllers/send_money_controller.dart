@@ -10,8 +10,6 @@ class SendMoneyController extends GetxController {
 
   SendMoneyController(this._repository);
 
-  // contacts
-
   // contacts load status
   Rx<RxStatus> contactsStatus = Rx<RxStatus>(RxStatus.loading());
 
@@ -37,7 +35,7 @@ class SendMoneyController extends GetxController {
   // entered amount
   final RxDouble enteredAmount = 0.0.obs;
 
-  // available balance (mock — replace with real user session value)
+  // available balance
   final double availableBalance = 13999.0;
 
   // processing state
@@ -114,8 +112,6 @@ class SendMoneyController extends GetxController {
     selectedPhone.value = phone;
     Get.toNamed(AppRoutes.confirmSendMoney);
   }
-
-  // ── confirm screen methods ────────────────────────────────────────────────
 
   // update amount from input
   void onAmountChanged(String value) {

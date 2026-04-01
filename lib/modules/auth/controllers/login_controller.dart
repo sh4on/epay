@@ -64,7 +64,6 @@ class LoginController extends GetxController with ValidationMixin {
 
   // forgot pin tap
   void onForgotPinTap() {
-    // placeholder — wire to forgot pin flow later
     Get.snackbar(
       'Forgot PIN',
       'Forgot PIN flow coming soon.',
@@ -76,7 +75,6 @@ class LoginController extends GetxController with ValidationMixin {
 
   // biometric tap
   void onBiometricTap() {
-    // placeholder — wire biometric auth later
     Get.snackbar(
       'Biometric',
       'Biometric authentication coming soon.',

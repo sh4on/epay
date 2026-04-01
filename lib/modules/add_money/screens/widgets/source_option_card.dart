@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_spacing.dart';
 import '../../../../core/constants/app_typography.dart';
-import '../../controllers/add_money_controller.dart';
+import '../../../../data/models/money_source_item.dart';
 
 class SourceOptionCard extends StatelessWidget {
   final MoneySourceItem source;

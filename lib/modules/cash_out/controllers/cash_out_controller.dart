@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../../../data/models/contact_model.dart';
 import '../../../data/models/bank_model.dart';
 import '../../../data/repositories/cash_out_repository.dart';
-import '../../../gen/assets.gen.dart';
 import '../../../routes/app_pages.dart';
+import '../screens/widgets/cash_out_success_dialog.dart';
 
 enum CashOutTab { agent, atm }
 
@@ -78,8 +77,6 @@ class CashOutController extends GetxController {
     activeTab.value = tab;
   }
 
-  // ── agent methods ─────────────────────────────────────────────────────────
-
   // fetch contacts for agent tab
   Future<void> fetchContacts() async {
     contactsStatus.value = RxStatus.loading();
@@ -125,7 +122,7 @@ class CashOutController extends GetxController {
     Get.toNamed(AppRoutes.confirmCashOut);
   }
 
-  // qr scan tap — placeholder
+  // qr scan tap
   void onQrScanTap() {
     Get.snackbar(
       'QR Scan',
@@ -135,8 +132,6 @@ class CashOutController extends GetxController {
       borderRadius: 12,
     );
   }
-
-  // ── atm methods ───────────────────────────────────────────────────────────
 
   // fetch partner banks
   Future<void> fetchBanks() async {
@@ -181,8 +176,6 @@ class CashOutController extends GetxController {
       borderRadius: 12,
     );
   }
-
-  // ── confirm screen methods ────────────────────────────────────────────────
 
   // update amount from keypad input
   void onAmountChanged(String value) {
@@ -245,7 +238,7 @@ class CashOutController extends GetxController {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (_) => _CashOutSuccessDialog(
+      builder: (_) => CashOutSuccessDialog(
         amount: enteredAmount.value,
         onBackToHome: () {
           Get.until((route) => route.settings.name == AppRoutes.base);
@@ -253,137 +246,4 @@ class CashOutController extends GetxController {
       ),
     );
   }
-}
-
-// cash out success dialog widget
-class _CashOutSuccessDialog extends StatelessWidget {
-  final double amount;
-  final VoidCallback onBackToHome;
-
-  const _CashOutSuccessDialog({
-    required this.amount,
-    required this.onBackToHome,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Dialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      backgroundColor: const Color(0xFFFFFFFF),
-      child: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // image
-            SvgPicture.asset(Assets.home.cashOut.success),
-
-            const SizedBox(height: 16),
-
-            // success title
-            const Text(
-              'Cash Out Successful',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF1A1A2E),
-              ),
-            ),
-
-            const SizedBox(height: 12),
-
-            // success message with highlighted amount
-            RichText(
-              textAlign: TextAlign.center,
-              text: TextSpan(
-                style: const TextStyle(fontSize: 14, color: Color(0xFF8A8A9A)),
-                children: [
-                  const TextSpan(text: 'You have successfully\nWithdraw '),
-                  TextSpan(
-                    text: 'TK ${amount.toStringAsFixed(0)}',
-                    style: const TextStyle(
-                      color: Color(0xFFF5A623),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            const SizedBox(height: 24),
-
-            // back to home button
-            SizedBox(
-              width: double.infinity,
-              height: 54,
-              child: ElevatedButton(
-                onPressed: onBackToHome,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF1A2E6C),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  elevation: 0,
-                ),
-                child: const Text(
-                  'Back To Home',
-                  style: TextStyle(
-                    color: Color(0xFFFFFFFF),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-// orange circular checkmark illustration for cash out success
-// class _CashOutSuccessIllustration extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return SizedBox(
-//       width: 100,
-//       height: 100,
-//       child: CustomPaint(painter: _OrangeCheckPainter()),
-//     );
-//   }
-// }
-
-class _OrangeCheckPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final cx = size.width / 2;
-    final cy = size.height / 2;
-
-    // outer orange ring
-    final ringPaint = Paint()
-      ..color = const Color(0xFFF5A623)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 5;
-
-    canvas.drawCircle(Offset(cx, cy), size.width / 2 - 4, ringPaint);
-
-    // checkmark
-    final checkPaint = Paint()
-      ..color = const Color(0xFFF5A623)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 5
-      ..strokeCap = StrokeCap.round
-      ..strokeJoin = StrokeJoin.round;
-
-    final checkPath = Path()
-      ..moveTo(cx - 22, cy + 2)
-      ..lineTo(cx - 6, cy + 18)
-      ..lineTo(cx + 24, cy - 16);
-
-    canvas.drawPath(checkPath, checkPaint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

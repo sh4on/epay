@@ -1,29 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../data/models/money_source_item.dart';
 import '../../../data/repositories/add_money_repository.dart';
 
 // add money tab types
 enum AddMoneyTab { bankToEkpay, cardToEkpay }
-
-// money source model
-class MoneySourceItem {
-  final String id;
-  final String label;
-  final String icon;
-
-  const MoneySourceItem({
-    required this.id,
-    required this.label,
-    required this.icon,
-  });
-
-  factory MoneySourceItem.fromJson(Map<String, dynamic> json) =>
-      MoneySourceItem(
-        id: json['id'] ?? '',
-        label: json['label'] ?? '',
-        icon: json['icon'] ?? '',
-      );
-}
 
 class AddMoneyController extends GetxController {
   final AddMoneyRepository _repository;
