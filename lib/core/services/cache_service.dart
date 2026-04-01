@@ -9,14 +9,14 @@ class CacheService {
 
   CacheService._internal();
 
-  final box = GetStorage();
+  final _box = GetStorage();
 
   void write(String key, String value) {
-    box.write(key, value);
+    _box.write(key, value);
   }
 
   String? read(String key) {
-    return box.read(key);
+    return _box.read(key);
   }
 }
 

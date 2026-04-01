@@ -1,3 +1,4 @@
+import 'package:epay/core/services/cache_service.dart';
 import 'package:epay/shared/common_widgets/contact_us_row.dart';
 import 'package:epay/modules/auth/screens/widgets/top_bar.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +13,19 @@ import '../../../routes/app_pages.dart';
 import '../../../shared/common_widgets/app_button.dart';
 import '../../../shared/common_widgets/double_tap_to_exit.dart';
 
-class SignupWelcomeScreen extends StatelessWidget {
+class SignupWelcomeScreen extends StatefulWidget {
   const SignupWelcomeScreen({super.key});
+
+  @override
+  State<SignupWelcomeScreen> createState() => _SignupWelcomeScreenState();
+}
+
+class _SignupWelcomeScreenState extends State<SignupWelcomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    CacheService.instance.write(CacheKeys.isFirstTime, 'yes');
+  }
 
   @override
   Widget build(BuildContext context) {

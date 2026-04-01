@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:epay/core/services/cache_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../routes/app_pages.dart';
@@ -9,8 +10,11 @@ class SplashController extends GetxController {
   void onInit() {
     super.onInit();
     Timer(const Duration(seconds: 2), () {
-      debugPrint('xxx');
-      Get.offNamed(AppRoutes.onboarding);
+      if (CacheService.instance.read(CacheKeys.isFirstTime) != null) {
+        Get.offAllNamed(AppRoutes.signupWelcome);
+      } else {
+        Get.offNamed(AppRoutes.onboarding);
+      }
     });
   }
 }
