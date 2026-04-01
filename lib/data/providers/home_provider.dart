@@ -1,6 +1,6 @@
 import '../../core/services/network_service.dart';
 
-// mock home provider — replace with real endpoints later
+// mock home provider
 class HomeProvider {
   // mock: fetch user balance
   Future<NetworkResult<dynamic>> fetchBalance() async {

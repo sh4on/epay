@@ -1,6 +1,6 @@
 import '../../core/services/network_service.dart';
 
-// mock api provider for auth — replace endpoints with real ones later
+// mock api provider for auth
 class AuthProvider {
   // mock base url
   static const String _base = 'https://jsonplaceholder.typicode.com';
@@ -10,7 +10,6 @@ class AuthProvider {
     required String phone,
     required String pin,
   }) async {
-    // replace with real endpoint
     return NetworkResult.success(
       {
         'id': '1',
@@ -30,7 +29,6 @@ class AuthProvider {
     required String phone,
     required String pin,
   }) async {
-    // replace with real endpoint
     return NetworkResult.success(
       {'phone': phone, 'otp_sent': true},
       200,
@@ -43,7 +41,6 @@ class AuthProvider {
     required String phone,
     required String otp,
   }) async {
-    // replace with real endpoint — mock accepts any 4-digit otp
     return NetworkResult.success(
       {
         'id': '1',

@@ -1,6 +1,6 @@
 import '../../core/services/network_service.dart';
 
-// mock add money provider — replace endpoints with real ones later
+// mock add money provider
 class AddMoneyProvider {
   // mock: fetch add money sources for bank tab
   Future<NetworkResult<dynamic>> fetchBankSources() async {

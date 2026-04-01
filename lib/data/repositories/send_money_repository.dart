@@ -1,7 +1,7 @@
 import '../providers/send_money_provider.dart';
 import '../../core/services/network_service.dart';
 
-// send money repository — mediates between controller and provider
+// send money repository
 class SendMoneyRepository {
   final SendMoneyProvider _provider;
 

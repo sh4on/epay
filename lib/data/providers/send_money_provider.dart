@@ -1,6 +1,6 @@
 import '../../core/services/network_service.dart';
 
-// mock send money provider — replace endpoints with real ones later
+// mock send money provider
 class SendMoneyProvider {
   // mock: fetch recent contacts
   Future<NetworkResult<dynamic>> fetchRecentContacts() async {

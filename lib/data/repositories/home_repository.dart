@@ -1,7 +1,7 @@
 import '../providers/home_provider.dart';
 import '../../core/services/network_service.dart';
 
-// home repository — mediates between controller and provider
+// home repository
 class HomeRepository {
   final HomeProvider _provider;
 

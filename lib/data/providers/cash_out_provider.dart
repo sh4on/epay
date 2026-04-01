@@ -1,6 +1,6 @@
 import '../../core/services/network_service.dart';
 
-// mock cash out provider — replace endpoints with real ones later
+// mock cash out provider
 class CashOutProvider {
   // mock: fetch recent contacts
   Future<NetworkResult<dynamic>> fetchRecentContacts() async {
